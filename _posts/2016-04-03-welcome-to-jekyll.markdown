@@ -108,7 +108,8 @@ Now that the repo is set up, open terminal and go to the jekyll page:
 git init
 git add *
 git commit -a -m "first commit"
-
+git remote add origin https://github.com/user/repo.git
+git push -u origin master
 {% endhighlight %}
 
 Now when we make changes commit the files and the push the commmits
