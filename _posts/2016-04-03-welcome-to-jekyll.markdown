@@ -90,22 +90,11 @@ W3schools has lots of info on CSS editing:   <a href="http://www.w3schools.com/c
 <h2>Uploading to Github</h2>
 Now that I've got the basic styles set up how I want and I started putting this content in the example post in the _posts folder, I'm going to have a go at putting this up on github.
 
-First I create a new repo on my github page: <a href="https://github.com/new">Create New Git Repo</a>
+I'm following the instruction here: <a href="https://pages.github.com/">https://pages.github.com/</a>
 
-Once you create the github repo it gives some instructions to initialise the github repository. So fire up terminal and navigate to the Jekyll folder.
-{% highlight ruby %}
-git init
-git add *
-git commit -a -m "first commit"
-git remote add origin "GITHUB LOCATION"
-git push -u origin master
-{% endhighlight %}
+I also saw these instructions from git hub about using bundler so I followed them: <a href="https://help.github.com/articles/setting-up-your-github-pages-site-locally-with-jekyll/">https://help.github.com/articles/setting-up-your-github-pages-site-locally-with-jekyll/</a>
 
-Now you go to the github webpage and create a new branch called gh-pages and then go back to the terminal.
-{% highlight ruby %}
-git pull
-git checkout gh-pages
-{% endhighlight %}
+After I used bundler I needed to install nodejs: sudo dnf install nodejs
 
 Now when we make changes commit the files and the push the commmits
 {% highlight ruby %}
@@ -113,13 +102,3 @@ git commit -a -m "commit message"
 git push origin --all
 {% endhighlight %}
 
-
-<h2>Problem Online!</h2>
-I encountered a problem once I had the page live. The page will go to username.github.io/repositoryname
-However, when I went there all my style sheets were broken and I had massive icons. This was because I hadn't updated my _config.yml to reflect the location of my Jekyll github page.
-
-For my page this was what I had to add to my _config.yml
-{% highlight ruby %}
-baseurl: "/digitalhumanities" # the subpath of your site, e.g. /blog
-url: "mergeandvary.github.io" # the base hostname & protocol for your site
-{% endhighlight %}
