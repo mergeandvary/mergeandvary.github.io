@@ -12,7 +12,7 @@ description: > # this means to ignore newlines until "baseurl:"
   General ramblings and mutterings on digital humanities and postgraduate HDR.
   I started this blog as a project for a postgraduate digital humanities subject at Macquarie University.
 baseurl: "/digitalhumanities" # the subpath of your site, e.g. /blog
-url: "http://mergeandvary.github.io" # the base hostname & protocol for your site
+url: "mergeandvary.github.io" # the base hostname & protocol for your site
 # twitter_username: jekyllrb
 github_username:  mergeandvary
 
