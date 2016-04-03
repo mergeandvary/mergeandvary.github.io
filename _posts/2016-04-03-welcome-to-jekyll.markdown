@@ -94,7 +94,22 @@ I'm following the instruction here: <a href="https://pages.github.com/">https://
 
 I also saw these instructions from git hub about using bundler so I followed them: <a href="https://help.github.com/articles/setting-up-your-github-pages-site-locally-with-jekyll/">https://help.github.com/articles/setting-up-your-github-pages-site-locally-with-jekyll/</a>
 
-After I used bundler I needed to install nodejs: sudo dnf install nodejs
+After I used bundler I needed to install nodejs: 
+{% highlight ruby %}
+sudo dnf install nodejs
+{% endhighlight %}
+
+Now that I've got everything set up I go to github and <a href="https://github.com/new">create a new repository</a>
+
+Make sure to set the repository name as yourusername.github.io
+
+Now that the repo is set up, open terminal and go to the jekyll page:
+{% highlight ruby %}
+git init
+git add *
+git commit -a -m "first commit"
+
+{% endhighlight %}
 
 Now when we make changes commit the files and the push the commmits
 {% highlight ruby %}
@@ -102,3 +117,6 @@ git commit -a -m "commit message"
 git push origin --all
 {% endhighlight %}
 
+The jekyll pages are at is at <a href="http://mergeandvary.github.io/">http://mergeandvary.github.io/</a>
+mergeandvary is my github page, just swap that part for your own username.
+username.github.io
