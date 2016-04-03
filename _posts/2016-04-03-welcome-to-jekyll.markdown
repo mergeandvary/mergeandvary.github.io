@@ -30,7 +30,7 @@ jekyll serve
 Now that the jekyll server is running, we can fire up our web browser and navigate to: [http://localhost:4000](http://localhost:4000)
 
 ## Failing Early, Failing Often: Lets get some content.
-Jekyll can feel a little intimidating at first. Not point trying to read mountains of documentation on all the various technical features, I'm just going to jump in. Best practice for learning FOSS is to fail early/often to learn better solutions and approaches: theory is no substitute for praxis. Luckily, we have the internet and surely others have failed before us, so lets employ our constructive laziness!
+Jekyll can feel a little intimidating at first. No point trying to read mountains of documentation on all the various technical features, I'm just going to jump in. Best practice for learning FOSS is to fail early/often to learn better solutions and approaches: theory is no substitute for praxis. Luckily, we have the internet and surely others have failed before us, so lets employ our constructive laziness!
 
 [http://lmgtfy.com/?q=jekyll+tutorial](http://lmgtfy.com/?q=jekyll+tutorial)
 
