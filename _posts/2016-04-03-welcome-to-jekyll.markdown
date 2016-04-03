@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "Welcome to Jekyll!"
+description: "This is my first foray into the world of Jekyll so I will be documenting my progress here. It seems scary at first, but as you get into it it really isn't as terrifying as it seems, I promise!"
 categories: jekyll update
 ---
 

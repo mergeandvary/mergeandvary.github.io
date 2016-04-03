@@ -200,7 +200,16 @@
 
 .post-link {
     display: block;
-    font-size: 24px;
+    font-weight: 800;
+    font-size: 42px;
+    font-style: italic;
+    color: #777;
+    letter-spacing: -1px;
+    line-height: 1;
+    &,
+    &:visited {
+        color: #777;
+    }
 }
 
 
