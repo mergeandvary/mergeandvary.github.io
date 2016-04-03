@@ -1,7 +1,6 @@
 ---
 layout: post
 title:  "Welcome to Jekyll!"
-date:   2016-04-03 13:40:44 +1000
 categories: jekyll update
 ---
 
@@ -12,7 +11,7 @@ This is my first foray into the world of Jekyll so I will be documenting my prog
 
 ## Installing Jekyll on Fedora
 [http://linuxsuperuser.com/install-jekyll-on-fedora-23/](http://linuxsuperuser.com/install-jekyll-on-fedora-23/)
-{% highlight ruby %}
+{% highlight html %}
 sudo dnf install ruby-devel
 sudo dnf install redhat-rpm-config
 sudo gem install jekyll
@@ -22,7 +21,7 @@ Installing Jekyll on Fedora was a breeze.
 
 ## Getting Started…
 [https://jekyllrb.com/docs/quickstart](https://jekyllrb.com/docs/quickstart/)
-{% highlight ruby %}
+{% highlight html %}
 jekyll new nameofblog
 cd nameofblog
 jekyll serve
@@ -43,7 +42,7 @@ We can change the settings of our landing page in the _config.yml file. I'm usin
 If you open up the _config.yml you will notice that it has the same text as the localhost landing page. Editing it seems pretty straightforward to me. Just edit the text after the colon for the particular section. Let's give it a go.
 
 I edited the part after title, but it didn't seem like my page was updating when I hit refresh on my browser for the localhost:4000 page. So I quit the jekyll server from terminal by hitting Ctrl+C and then re ran it
-{% highlight ruby %}
+{% highlight html %}
 jekyll serve
 {% endhighlight %}
 
@@ -68,7 +67,7 @@ The main style changes occur in my-jekyll-folder/_sass/_layout.scss
 So I fire up sublimetext3 and open the file.
 
 I'm not super familiar with SASS style sheets, but looks fairly straight forward. First thing I want to do is change my Post Title style for my posts. So I scroll down to the Posts section in my text editor:
-{% highlight ruby %}
+{% highlight css %}
 .post-title {
     font-weight: 800;
     font-style: italic;
@@ -97,7 +96,7 @@ I'm following the instruction here: [https://pages.github.com/](https://pages.gi
 I also saw these instructions from git hub about using bundler so I followed them: [https://help.github.com/articles/setting-up-your-github-pages-site-locally-with-jekyll/](https://help.github.com/articles/setting-up-your-github-pages-site-locally-with-jekyll/)
 
 After I used bundler I needed to install nodejs: 
-{% highlight ruby %}
+{% highlight html %}
 sudo dnf install nodejs
 {% endhighlight %}
 
@@ -106,7 +105,7 @@ Now that I've got everything set up I go to github and [create a new repository]
 Make sure to set the repository name as yourusername.github.io
 
 Now that the repo is set up, open terminal and go to the jekyll page:
-{% highlight ruby %}
+{% highlight html %}
 git init
 git add *
 git commit -a -m "first commit"
@@ -115,7 +114,7 @@ git push -u origin master
 {% endhighlight %}
 
 Now when we make changes commit the files and the push the commmits
-{% highlight ruby %}
+{% highlight html %}
 git commit -a -m "commit message"
 git push origin --all
 {% endhighlight %}
