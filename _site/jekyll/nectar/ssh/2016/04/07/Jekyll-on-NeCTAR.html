@@ -88,11 +88,12 @@ After login through the university, I go to Images in the left menu pane.</p>
 
 <h2 id="cloning-jekyll-blog-git-repo">Cloning Jekyll Blog Git Repo</h2>
 <p>Considering I’ve already set up my Jekyll blog and I just want a NeCTAR virtual machine to run Jekyll so that I can edit my blog from anywhere I can access a terminal, I’m just going to clone my existing repo so I can push from the VM.
-After SSH in, I’m going to need to install git:
-sudo dnf install git</p>
+After SSH in, I’m going to need to install git:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">sudo dnf install git</code></pre></figure>
 
 <p>Then I clone my repo:
-git clone https://github.com/mergeandvary/mergeandvary.github.io.git</p>
+<code class="highlighter-rouge">git clone https://github.com/mergeandvary/mergeandvary.github.io.git</code></p>
 
 <p>Now I cd into my clone repo directory (tab completion is useful here!)
 cd mergeandvary.github.io</p>
@@ -139,6 +140,8 @@ cd _posts</p>
 
 <p>Seeing as I’ve got an X over SSH session running, I’m just going to use gedit as my text editor:
 sudo dnf install gedit</p>
+
+<p>Though really I think I prefer nano in the terminal as it is a little quicker.</p>
 
 <p>Now I make my post:
 gedit 2016-04-07-Jekyll-on-NeCTAR.markdown</p>
