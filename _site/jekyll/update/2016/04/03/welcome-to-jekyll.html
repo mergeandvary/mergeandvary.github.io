@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Welcome to Jekyll!</title>
+  <meta name="description" content="source: http://timjames.me/img/jekyll/feature.jpg">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="mergeandvary.github.io/jekyll/update/2016/04/03/welcome-to-jekyll.html">
+  <link rel="alternate" type="application/rss+xml" title="merge_andvary." href="mergeandvary.github.io/feed.xml">
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">merge_andvary.</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        
+          
+          <a class="page-link" href="/about/">About</a>
+          
+        
+          
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Welcome to Jekyll!</h1>
+    <p class="post-meta"><time datetime="2016-04-03T00:00:00+00:00" itemprop="datePublished">Apr 3, 2016</time></p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p><img src="http://timjames.me/img/jekyll/feature.jpg" alt="github jekyll image" />
+<small>source: http://timjames.me/img/jekyll/feature.jpg</small></p>
+
+<p>This is my first foray into the world of Jekyll so I will be documenting my progress here. It seems scary at first, but as you get into it it really isn’t as terrifying as it seems, I promise!</p>
+
+<h2 id="installing-jekyll-on-fedora">Installing Jekyll on Fedora</h2>
+<p><a href="http://linuxsuperuser.com/install-jekyll-on-fedora-23/">http://linuxsuperuser.com/install-jekyll-on-fedora-23/</a></p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html">sudo dnf install ruby-devel
+sudo dnf install redhat-rpm-config
+sudo gem install jekyll</code></pre></figure>
+
+<p>Installing Jekyll on Fedora was a breeze.</p>
+
+<h2 id="getting-started">Getting Started…</h2>
+<p><a href="https://jekyllrb.com/docs/quickstart/">https://jekyllrb.com/docs/quickstart</a></p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html">jekyll new nameofblog
+cd nameofblog
+jekyll serve</code></pre></figure>
+
+<p>Now that the jekyll server is running, we can fire up our web browser and navigate to: <a href="http://localhost:4000">http://localhost:4000</a></p>
+
+<h2 id="failing-early-failing-often-lets-get-some-content">Failing Early, Failing Often: Lets get some content.</h2>
+<p>Jekyll can feel a little intimidating at first. No point trying to read mountains of documentation on all the various technical features, I’m just going to jump in. Best practice for learning FOSS is to fail early/often to learn better solutions and approaches: theory is no substitute for praxis. Luckily, we have the internet and surely others have failed before us, so lets employ our constructive laziness!</p>
+
+<p><a href="http://lmgtfy.com/?q=jekyll+tutorial">http://lmgtfy.com/?q=jekyll+tutorial</a></p>
+
+<p>Okay lets go.</p>
+
+<h2 id="customising-appearance">Customising Appearance</h2>
+<p>Before I go and push my blog to a github page, I’m going to have a go at editing things locally and viewing them on the localhost jekyll server.
+We can change the settings of our landing page in the _config.yml file. I’m using <a href="https://www.sublimetext.com/3">sublimetext3</a> for my text editor as multiple cursors and extensive plugin support cannot be beaten in my eyes (plus its cross platform compatible which is super important for me).</p>
+
+<p>If you open up the _config.yml you will notice that it has the same text as the localhost landing page. Editing it seems pretty straightforward to me. Just edit the text after the colon for the particular section. Let’s give it a go.</p>
+
+<p>I edited the part after title, but it didn’t seem like my page was updating when I hit refresh on my browser for the localhost:4000 page. So I quit the jekyll server from terminal by hitting Ctrl+C and then re ran it</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html">jekyll serve</code></pre></figure>
+
+<p>And now I can see my changes. 
+Not really keen on having my email shared on my blog, so I deleted that line. Updated my description. Going well so far. Now that I’ve got some basic content on my page, I’m going to look at changing the style sheet for the blog.</p>
+
+<h2 id="sass-scss-style-sheets">SASS: SCSS Style Sheets</h2>
+<p>The Style Sheet is in my-jekyll-folder/css/main.scss
+First up I’m going to change the font family from Helevetica Neue to Source Sans Pro which is a fantastic freely available grotesque sans serif font developed by Paul D Hunt for Adobe. It is distributed under the SIL Open Font license. So in the spirit of FOSS, this is my font!</p>
+
+<p>Some other good sans-serif free fonts are OpenSans, Liberation Sans, Droid Sans, Roboto, Bebas Neue</p>
+
+<p>Pretty easy so far.
+I’ve noticed that other changes outside of _config.yml auto update, so no need to restart the server when making changes here. Just hit refresh
+The templates for the pages and posts are in my-jekyll-folder/_layouts and you can edit the header and foot html in my-jekyll-folder/_includes
+_sass/_layout.scss</p>
+
+<p>The main style changes occur in my-jekyll-folder/_sass/_layout.scss</p>
+
+<p>So I fire up sublimetext3 and open the file.</p>
+
+<p>I’m not super familiar with SASS style sheets, but looks fairly straight forward. First thing I want to do is change my Post Title style for my posts. So I scroll down to the Posts section in my text editor:</p>
+
+<figure class="highlight"><pre><code class="language-css" data-lang="css"><span class="nc">.post-title</span> <span class="p">{</span>
+    <span class="nl">font-weight</span><span class="p">:</span> <span class="m">800</span><span class="p">;</span>
+    <span class="nl">font-style</span><span class="p">:</span> <span class="nb">italic</span><span class="p">;</span>
+    <span class="nl">font-size</span><span class="p">:</span> <span class="m">42px</span><span class="p">;</span>
+    <span class="nl">color</span><span class="p">:</span> <span class="m">#777</span><span class="p">;</span>
+    <span class="nl">letter-spacing</span><span class="p">:</span> <span class="m">-1px</span><span class="p">;</span>
+    <span class="nl">line-height</span><span class="p">:</span> <span class="m">1</span><span class="p">;</span>
+
+    <span class="err">@include</span> <span class="err">media-query($on-laptop)</span> <span class="err">{</span>
+        <span class="nl">font-size</span><span class="p">:</span> <span class="m">36px</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="err">}</span></code></pre></figure>
+
+<p>Ah-Ha! .post-title seems to be what I’m looking for! A quick change of the font size and refresh in the browser confirms this.</p>
+
+<p>I want to change the weight of the font for post titles so I add font-weight to the section. From the main.scss file I know that our standard font weight is 400, but I decide I want a lighter standard weight so I change it to 200 and then I want the header to be Extra Bold / Heavy so I choose 800 for the post title weight. I also want to change the post title font colour to be a lighter gray colour so I add color: #777 which is short hand for #777777 which is the rgb hexadecimal colour code.</p>
+
+<p>W3schools has lots of info on CSS editing:   <a href="http://www.w3schools.com/css/css_font.asp">http://www.w3schools.com/css/css_font.asp</a></p>
+
+<h2 id="uploading-to-github">Uploading to Github</h2>
+<p>Now that I’ve got the basic styles set up how I want and I started putting this content in the example post in the _posts folder, I’m going to have a go at putting this up on github.</p>
+
+<p>I’m following the instruction here: <a href="https://pages.github.com/">https://pages.github.com/</a></p>
+
+<p>I also saw these instructions from git hub about using bundler so I followed them: <a href="https://help.github.com/articles/setting-up-your-github-pages-site-locally-with-jekyll/">https://help.github.com/articles/setting-up-your-github-pages-site-locally-with-jekyll/</a></p>
+
+<p>After I used bundler I needed to install nodejs:</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html">sudo dnf install nodejs</code></pre></figure>
+
+<p>Now that I’ve got everything set up I go to github and <a href="https://github.com/new">create a new repository</a></p>
+
+<p>Make sure to set the repository name as yourusername.github.io</p>
+
+<p>Now that the repo is set up, open terminal and go to the jekyll page:</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html">git init
+git add *
+git commit -a -m "first commit"
+git remote add origin https://github.com/user/repo.git
+git push -u origin master</code></pre></figure>
+
+<p>Now when we make changes commit the files and the push the commmits</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html">git commit -a -m "commit message"
+git push origin --all</code></pre></figure>
+
+<p>The jekyll pages are at is at <a href="http://mergeandvary.github.io/">http://mergeandvary.github.io/</a>
+mergeandvary is my github page, just swap that part for your own username.
+username.github.io</p>
+
+<h2 id="learning-markdown">Learning Markdown</h2>
+<p>My initial blogging attempts were all done with a mix of markdown and html. Jekyll is great in that it lets you mix things up. However, for the sake of consistency I decided to learn a bit about markdown formatting and stick to one style as much as I can.</p>
+
+<p>Here is a great <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">markdown cheat sheet</a></p>
+
+  </div>
+
+</article>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <em>merge_andvary.</em>
+          <li><a href="mailto:"></a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/mergeandvary"><span class="icon icon--github"><svg viewBox="0 0 16 16"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">mergeandvary</span></a>
+
+          </li>
+          
+
+          
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-3">
+        <p>General ramblings and mutterings on digital humanities and postgraduate HDR. I started this blog as a project for a postgraduate digital humanities subject at Macquarie University.
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Jekyll NeCTAR</title>
+  <meta name="description" content="Jekyll doesn’t official support windows so I’m going to setup a NeCTAR virtual machine to run Fedora so that I can SSH in and edit my blog from my windows ta...">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="mergeandvary.github.io/jekyll/nectar/ssh/2016/04/07/Jekyll-on-NeCTAR.html">
+  <link rel="alternate" type="application/rss+xml" title="merge_andvary." href="mergeandvary.github.io/feed.xml">
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">merge_andvary.</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        
+          
+          <a class="page-link" href="/about/">About</a>
+          
+        
+          
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Jekyll NeCTAR</h1>
+    <p class="post-meta"><time datetime="2016-04-07T00:00:00+00:00" itemprop="datePublished">Apr 7, 2016</time></p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p>Jekyll doesn’t official support windows so I’m going to setup a NeCTAR virtual machine to run Fedora so that I can SSH in and edit my blog from my windows tablet using PuTTY or MobaXTerm.</p>
+
+<h2 id="setting-up-a-nectar-virtual-machine-for-jekyll">Setting up a NeCTAR Virtual Machine for Jekyll</h2>
+<p><a href="https://nectar.org.au/">https://nectar.org.au/</a>
+After login through the university, I go to Images in the left menu pane.</p>
+
+<p>Considering my struggles with Ubuntu and that I’m familiar with Fedora, Im going to use the Fedora 23 image.</p>
+
+<p>Select Launch Instance.</p>
+
+<p>Give the Instance a name. Choose the Fedora 23 image from the Image Name Box. Change the flavour to m2.small as the tiny one seems a little too tiny.</p>
+
+<p>Goto the Access &amp; Security tab and select your key pair and enable SSH.</p>
+
+<p>Hit the Launch button and wait for the machine to initialise.</p>
+
+<p>Grab the IP address from the Instances tab.</p>
+
+<p>Open a terminal a SSH connection with your prefered method 
+(PuTTY, Linux Terminal etc.)</p>
+
+<p>The Fedora machine username is ec2-user 
+(I tried login as root, told me to login as ec2-user).</p>
+
+<h2 id="cloning-jekyll-blog-git-repo">Cloning Jekyll Blog Git Repo</h2>
+<p>Considering I’ve already set up my Jekyll blog and I just want a NeCTAR virtual machine to run Jekyll so that I can edit my blog from anywhere I can access a terminal, I’m just going to clone my existing repo so I can push from the VM.
+After SSH in, I’m going to need to install git:
+sudo dnf install git</p>
+
+<p>Then I clone my repo:
+git clone https://github.com/mergeandvary/mergeandvary.github.io.git</p>
+
+<p>Now I cd into my clone repo directory (tab completion is useful here!)
+cd mergeandvary.github.io</p>
+
+<p>I’ve already got a gem file setup from previously. But I just double check its contents with cat:
+cat Gemfile</p>
+
+<p>Contents of Gemfile:
+source ‘https://rubygems.org’
+gem ‘github-pages’, group: :jekyll_plugins</p>
+
+<h2 id="installing-jekyll-on-vm">Installing Jekyll on VM</h2>
+<p>Now I’m ready to install Jekyll:
+sudo dnf install ruby-devel redhat-rpm-config gcc zlib-devel
+gem install bundler
+bundle install</p>
+
+<p>I initially had errors from bundle install, so I tracked down the missing packages: gcc. After that I had errors with nokogiri about zlib. I already had zlib installed but not zlib-devel so I install that also. After that everything worked.</p>
+
+<p>Now I try a localhost server:
+bundle exec jekyll serve</p>
+
+<p>And I get the error about javascript, so I install nodejs as per my previous guide:
+sudo dnf install nodejs</p>
+
+<h2 id="cant-access-localhost-remotely">Can’t Access Localhost Remotely</h2>
+<p>However, now we run into another problem. We aren’t on the local machine so we can’t access localhost. This is where X forwarding over SSH comes in.
+First I install firefox on my VM:
+sudo dnf install firefox</p>
+
+<p>I also need xorg-x11-xauth to allow for X forwarding over SSH:
+sudo dnf install xorg-x11-xauth</p>
+
+<p>I have to get 114mb of packages, so time for a cup of tea and I’ll come back once its done. Once that is done we need quit out of our SSH session and relaunch it with X forwarding capabilities. There probably is a better method to do this, but it works well enough and it is easy so I’m just doing it this way. 
+Now I can launch firefox from my SSH session. I’ll use the &amp; ampersand at the end because I also want to continue using my terminal to run the jekyll server:
+firefox &amp;
+bundle exec jekyll serve</p>
+
+<p>It’s pretty slow going to do it this way – firefox takes a while to start up. I’m sure @brian will have some better suggestions for accessing a localhost address remotely. This is a pretty terrible way to achieve this.</p>
+
+<h2 id="writing-a-post">Writing a Post</h2>
+<p>I’ve already got my blog setup in terms of style sheets so all I need to do is write a blog post. So I open the _posts folder:
+cd _posts</p>
+
+<p>Seeing as I’ve got an X over SSH session running, I’m just going to use gedit as my text editor:
+sudo dnf install gedit</p>
+
+<p>Now I make my post:
+gedit 2016-04-07-Jekyll-on-NeCTAR.markdown</p>
+
+<p>I need to add a YAML front matter header
+-–
+layout: post
+title:  “Jekyll NeCTAR”
+description: “Jekyll doesn’t official support windows so I’m going to setup a NeCTAR virtual machine to run Fedora so that I can SSH in and edit my blog from my windows tablet using PuTTY or MobaXTerm.”
+categories: jekyll nectar ssh
+-–</p>
+
+<p>And then after that I add my post in plain text and use markdown to add headings etc.
+I save that. Run Jekyll server to build it and maybe check it out on my terrible Firefox on X over SSH method if I really. Then I can commit it and push back to my github:
+bundle exec jekyll build
+git commit -a -m “Jekyll nectar post”
+git push origin master</p>
+
+
+  </div>
+
+</article>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <em>merge_andvary.</em>
+          <li><a href="mailto:"></a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/mergeandvary"><span class="icon icon--github"><svg viewBox="0 0 16 16"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">mergeandvary</span></a>
+
+          </li>
+          
+
+          
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-3">
+        <p>General ramblings and mutterings on digital humanities and postgraduate HDR. I started this blog as a project for a postgraduate digital humanities subject at Macquarie University.
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>
