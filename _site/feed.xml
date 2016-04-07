@@ -6,8 +6,8 @@
 </description>
     <link>mergeandvary.github.io/</link>
     <atom:link href="mergeandvary.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 07 Apr 2016 01:43:38 +0000</pubDate>
-    <lastBuildDate>Thu, 07 Apr 2016 01:43:38 +0000</lastBuildDate>
+    <pubDate>Thu, 07 Apr 2016 01:46:12 +0000</pubDate>
+    <lastBuildDate>Thu, 07 Apr 2016 01:46:12 +0000</lastBuildDate>
     <generator>Jekyll v3.0.3</generator>
     
       <item>
@@ -111,17 +111,18 @@ bundle &lt;span class=&quot;nb&quot;&gt;exec &lt;/span&gt;jekyll serve&lt;/code&
 
 &lt;p&gt;I need to add a YAML front matter header&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;se&quot;&gt;\-&lt;/span&gt;--
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;---
 layout: post
 title:  &lt;span class=&quot;s2&quot;&gt;&quot;Jekyll NeCTAR&quot;&lt;/span&gt;
 description: &lt;span class=&quot;s2&quot;&gt;&quot;Jekyll doesn&#39;t official support windows so I&#39;m going to setup a NeCTAR virtual machine to run Fedora so that I can SSH in and edit my blog from my windows tablet using PuTTY or MobaXTerm.&quot;&lt;/span&gt;
 categories: jekyll nectar ssh
-&lt;span class=&quot;se&quot;&gt;\-&lt;/span&gt;--&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+---&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;And then after that I add my post in plain text and use markdown to add headings etc.
-I save that. Run Jekyll server to build it and maybe check it out on my terrible Firefox on X over SSH method if I really. Then I can commit it and push back to my github:&lt;/p&gt;
+I save that. Run Jekyll server to build it and maybe check it out on my terrible Firefox on X over SSH method if I really. Then I can commit it and push back to my github. Also make sure you use &lt;code class=&quot;highlighter-rouge&quot;&gt;cd ..&lt;/code&gt; to go back a directory because you need to build and commit from the base directory.&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;bundle &lt;span class=&quot;nb&quot;&gt;exec &lt;/span&gt;jekyll build
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; ..
+bundle &lt;span class=&quot;nb&quot;&gt;exec &lt;/span&gt;jekyll build
 git commit -a -m “Jekyll nectar post”
 git push origin master&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 

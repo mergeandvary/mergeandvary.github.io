@@ -117,17 +117,18 @@ gedit 2016-04-07-Jekyll-on-NeCTAR.markdown
 
 I need to add a YAML front matter header
 {% highlight bash %}
-\---
+---
 layout: post
 title:  "Jekyll NeCTAR"
 description: "Jekyll doesn't official support windows so I'm going to setup a NeCTAR virtual machine to run Fedora so that I can SSH in and edit my blog from my windows tablet using PuTTY or MobaXTerm."
 categories: jekyll nectar ssh
-\---
+---
 {% endhighlight %}
 
 And then after that I add my post in plain text and use markdown to add headings etc.
-I save that. Run Jekyll server to build it and maybe check it out on my terrible Firefox on X over SSH method if I really. Then I can commit it and push back to my github:
+I save that. Run Jekyll server to build it and maybe check it out on my terrible Firefox on X over SSH method if I really. Then I can commit it and push back to my github. Also make sure you use `cd ..` to go back a directory because you need to build and commit from the base directory.
 {% highlight bash %}
+cd ..
 bundle exec jekyll build
 git commit -a -m “Jekyll nectar post”
 git push origin master
