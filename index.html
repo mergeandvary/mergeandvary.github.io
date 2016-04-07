@@ -10,7 +10,7 @@ layout: default
         <h2>
           <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
         </h2>
-        <p class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</p>
+        <p class="post-meta">{{ post.date | date: "%b %-d, %Y" }}{% if post.author %}&nbsp;&nbsp; • &nbsp;&nbsp;<span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ post.author }}</span></span>{% endif %}</p>
         <p>{{ post.description }}</p>
         <a href="{{ post.url | prepend: site.baseurl }}">Read more...</a>
       </li>

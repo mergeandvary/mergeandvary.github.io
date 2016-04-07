@@ -6,15 +6,16 @@
 # 'jekyll serve'. If you change this file, please restart the server process.
 
 # Site settings
-title: merge_andvary.
+title: FOAR705 Digital Humanities
 # email: your-email@domain.com
 description: > # this means to ignore newlines until "baseurl:"
-  General ramblings and mutterings on digital humanities and postgraduate HDR.
-  I started this blog as a project for a postgraduate digital humanities subject at Macquarie University.
+  This unit explores cross-disciplinary approaches to research that fall under the rubric of ‘digital humanities’, 
+  the aim of which is to use technological tools to solve domain problems.
+  and present results in an accessible way.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "mergeandvary.github.io" # the base hostname & protocol for your site
 # twitter_username: jekyllrb
-github_username:  mergeandvary
+# github_username:  mergeandvary
 
 # Build settings
 markdown: kramdown

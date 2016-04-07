@@ -3,6 +3,7 @@ layout: post
 title:  "Setting up Nectar Cloud with X forwarding over SSH"
 description: "The government spent a ton of money on NeCTAR and we get two free machines through the university, so lets set one up."
 categories: nectar nectarcloud nectarresearch research
+author: Cooper B
 ---
 
 ![Nectar](https://nectar.org.au/wp-content/uploads/2015/10/nectardirectorate-logo.png)

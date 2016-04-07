@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>merge_andvary.</title>
-    <description>General ramblings and mutterings on digital humanities and postgraduate HDR. I started this blog as a project for a postgraduate digital humanities subject at Macquarie University.
+    <title>FOAR705 Digital Humanities</title>
+    <description>This unit explores cross-disciplinary approaches to research that fall under the rubric of ‘digital humanities’,  the aim of which is to use technological tools to solve domain problems. and present results in an accessible way.
 </description>
     <link>mergeandvary.github.io/</link>
     <atom:link href="mergeandvary.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 07 Apr 2016 14:15:13 +1000</pubDate>
-    <lastBuildDate>Thu, 07 Apr 2016 14:15:13 +1000</lastBuildDate>
+    <pubDate>Thu, 07 Apr 2016 14:42:43 +1000</pubDate>
+    <lastBuildDate>Thu, 07 Apr 2016 14:42:43 +1000</lastBuildDate>
     <generator>Jekyll v3.0.3</generator>
     
       <item>

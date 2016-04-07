@@ -3,6 +3,7 @@ layout: post
 title:  "Jekyll NeCTAR"
 description: "Jekyll doesn't official support windows so I'm going to setup a NeCTAR virtual machine to run Fedora so that I can SSH in and edit my blog from my windows tablet using PuTTY or MobaXTerm."
 categories: jekyll nectar ssh
+author: Cooper B
 ---
 Jekyll doesn't official support windows so I'm going to setup a NeCTAR virtual machine to run Fedora so that I can SSH in and edit my blog from my windows tablet using PuTTY or MobaXTerm.
 
