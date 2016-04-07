@@ -4,7 +4,6 @@ title:  "Jekyll NeCTAR"
 description: "Jekyll doesn't official support windows so I'm going to setup a NeCTAR virtual machine to run Fedora so that I can SSH in and edit my blog from my windows tablet using PuTTY or MobaXTerm."
 categories: jekyll nectar ssh
 ---
-
 Jekyll doesn't official support windows so I'm going to setup a NeCTAR virtual machine to run Fedora so that I can SSH in and edit my blog from my windows tablet using PuTTY or MobaXTerm.
 
 ## Setting up a NeCTAR Virtual Machine for Jekyll
@@ -32,10 +31,12 @@ The Fedora machine username is ec2-user
 ## Cloning Jekyll Blog Git Repo
 Considering I've already set up my Jekyll blog and I just want a NeCTAR virtual machine to run Jekyll so that I can edit my blog from anywhere I can access a terminal, I'm just going to clone my existing repo so I can push from the VM.
 After SSH in, I'm going to need to install git:
+{% highlight bash %}
 sudo dnf install git
+{% endhighlight %}
 
 Then I clone my repo:
-git clone https://github.com/mergeandvary/mergeandvary.github.io.git
+`git clone https://github.com/mergeandvary/mergeandvary.github.io.git`
 
 Now I cd into my clone repo directory (tab completion is useful here!)
 cd mergeandvary.github.io
@@ -82,6 +83,8 @@ cd _posts
 
 Seeing as I've got an X over SSH session running, I'm just going to use gedit as my text editor:
 sudo dnf install gedit
+
+Though really I think I prefer nano in the terminal as it is a little quicker.
 
 Now I make my post:
 gedit 2016-04-07-Jekyll-on-NeCTAR.markdown
