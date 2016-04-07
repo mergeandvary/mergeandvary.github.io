@@ -92,73 +92,88 @@ After SSH in, I’m going to need to install git:</p>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash">sudo dnf install git</code></pre></figure>
 
-<p>Then I clone my repo:
-<code class="highlighter-rouge">git clone https://github.com/mergeandvary/mergeandvary.github.io.git</code></p>
+<p>Then I clone my repo:</p>
 
-<p>Now I cd into my clone repo directory (tab completion is useful here!)
-cd mergeandvary.github.io</p>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">git clone https://github.com/mergeandvary/mergeandvary.github.io.git</code></pre></figure>
 
-<p>I’ve already got a gem file setup from previously. But I just double check its contents with cat:
-cat Gemfile</p>
+<p>Now I cd into my clone repo directory (tab completion is useful here!)</p>
 
-<p>Contents of Gemfile:
-source ‘https://rubygems.org’
-gem ‘github-pages’, group: :jekyll_plugins</p>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">cd </span>mergeandvary.github.io</code></pre></figure>
+
+<p>I’ve already got a gem file setup from previously. But I just double check its contents with cat:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">cat Gemfile</code></pre></figure>
+
+<p>Contents of Gemfile:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">source</span> <span class="s1">'https://rubygems.org'</span>
+gem <span class="s1">'github-pages'</span>, group: :jekyll_plugins</code></pre></figure>
 
 <h2 id="installing-jekyll-on-vm">Installing Jekyll on VM</h2>
-<p>Now I’m ready to install Jekyll:
-sudo dnf install ruby-devel redhat-rpm-config gcc zlib-devel
+<p>Now I’m ready to install Jekyll:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">sudo dnf install ruby-devel redhat-rpm-config gcc zlib-devel
 gem install bundler
-bundle install</p>
+bundle install</code></pre></figure>
 
 <p>I initially had errors from bundle install, so I tracked down the missing packages: gcc. After that I had errors with nokogiri about zlib. I already had zlib installed but not zlib-devel so I install that also. After that everything worked.</p>
 
-<p>Now I try a localhost server:
-bundle exec jekyll serve</p>
+<p>Now I try a localhost server:</p>
 
-<p>And I get the error about javascript, so I install nodejs as per my previous guide:
-sudo dnf install nodejs</p>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">bundle <span class="nb">exec </span>jekyll serve</code></pre></figure>
+
+<p>And I get the error about javascript, so I install nodejs as per my previous guide:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">sudo dnf install nodejs</code></pre></figure>
 
 <h2 id="cant-access-localhost-remotely">Can’t Access Localhost Remotely</h2>
 <p>However, now we run into another problem. We aren’t on the local machine so we can’t access localhost. This is where X forwarding over SSH comes in.
-First I install firefox on my VM:
-sudo dnf install firefox</p>
+First I install firefox on my VM:</p>
 
-<p>I also need xorg-x11-xauth to allow for X forwarding over SSH:
-sudo dnf install xorg-x11-xauth</p>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">sudo dnf install firefox</code></pre></figure>
+
+<p>I also need xorg-x11-xauth to allow for X forwarding over SSH:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">sudo dnf install xorg-x11-xauth</code></pre></figure>
 
 <p>I have to get 114mb of packages, so time for a cup of tea and I’ll come back once its done. Once that is done we need quit out of our SSH session and relaunch it with X forwarding capabilities. There probably is a better method to do this, but it works well enough and it is easy so I’m just doing it this way. 
-Now I can launch firefox from my SSH session. I’ll use the &amp; ampersand at the end because I also want to continue using my terminal to run the jekyll server:
-firefox &amp;
-bundle exec jekyll serve</p>
+Now I can launch firefox from my SSH session. I’ll use the &amp; ampersand at the end because I also want to continue using my terminal to run the jekyll server:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">firefox &amp;
+bundle <span class="nb">exec </span>jekyll serve</code></pre></figure>
 
 <p>It’s pretty slow going to do it this way – firefox takes a while to start up. I’m sure @brian will have some better suggestions for accessing a localhost address remotely. This is a pretty terrible way to achieve this.</p>
 
 <h2 id="writing-a-post">Writing a Post</h2>
-<p>I’ve already got my blog setup in terms of style sheets so all I need to do is write a blog post. So I open the _posts folder:
-cd _posts</p>
+<p>I’ve already got my blog setup in terms of style sheets so all I need to do is write a blog post. So I open the _posts folder:</p>
 
-<p>Seeing as I’ve got an X over SSH session running, I’m just going to use gedit as my text editor:
-sudo dnf install gedit</p>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">cd </span>_posts</code></pre></figure>
+
+<p>Seeing as I’ve got an X over SSH session running, I’m just going to use gedit as my text editor:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">sudo dnf install gedit</code></pre></figure>
 
 <p>Though really I think I prefer nano in the terminal as it is a little quicker.</p>
 
-<p>Now I make my post:
-gedit 2016-04-07-Jekyll-on-NeCTAR.markdown</p>
+<p>Now I make my post:</p>
 
-<p>I need to add a YAML front matter header
--–
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">gedit 2016-04-07-Jekyll-on-NeCTAR.markdown</code></pre></figure>
+
+<p>I need to add a YAML front matter header</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="se">\-</span>--
 layout: post
-title:  “Jekyll NeCTAR”
-description: “Jekyll doesn’t official support windows so I’m going to setup a NeCTAR virtual machine to run Fedora so that I can SSH in and edit my blog from my windows tablet using PuTTY or MobaXTerm.”
+title:  <span class="s2">"Jekyll NeCTAR"</span>
+description: <span class="s2">"Jekyll doesn't official support windows so I'm going to setup a NeCTAR virtual machine to run Fedora so that I can SSH in and edit my blog from my windows tablet using PuTTY or MobaXTerm."</span>
 categories: jekyll nectar ssh
--–</p>
+<span class="se">\-</span>--</code></pre></figure>
 
 <p>And then after that I add my post in plain text and use markdown to add headings etc.
-I save that. Run Jekyll server to build it and maybe check it out on my terrible Firefox on X over SSH method if I really. Then I can commit it and push back to my github:
-bundle exec jekyll build
+I save that. Run Jekyll server to build it and maybe check it out on my terrible Firefox on X over SSH method if I really. Then I can commit it and push back to my github:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">bundle <span class="nb">exec </span>jekyll build
 git commit -a -m “Jekyll nectar post”
-git push origin master</p>
+git push origin master</code></pre></figure>
 
 
   </div>
