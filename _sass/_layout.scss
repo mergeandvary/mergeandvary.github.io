@@ -12,6 +12,7 @@
 .site-spanimage {
     height: -webkit-calc(100vh - 88px);
     height:         calc(100vh - 88px);
+    width: 100%;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -183,6 +184,7 @@
 .page-spanimage {
     height: -webkit-calc(100vh - 210px);
     height:         calc(100vh - 210px);
+    width: 100%;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -192,6 +194,7 @@
 }
 .page-aboutspanimage {
     height: 42vh;
+    width: 100%;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
