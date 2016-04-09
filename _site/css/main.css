@@ -120,6 +120,7 @@ pre > code { border: 0; padding-right: 0; padding-left: 0; }
 .social-sharetext { font-size: 7pt; font-weight: 400; color: #999; text-align: center; line-height: 2; letter-spacing: 1px; }
 
 .social-shareicon { font-size: 36px; text-align: center; line-height: 1; color: #bbb; letter-spacing: 24px; }
+.social-shareicon, .social-shareicon:visited { color: #bbb; }
 
 /** Posts */
 .post-header { margin-bottom: 30px; }

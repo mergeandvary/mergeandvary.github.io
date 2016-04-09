@@ -288,6 +288,10 @@
     line-height: 1;
     color: #bbb;
     letter-spacing: 24px;
+    &,
+    &:visited {
+        color: #bbb;
+    }
 }
 
 /**
