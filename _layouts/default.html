@@ -10,7 +10,10 @@
     <p class="page-imagesrc">&nbsp;{% if page.imagesrc %}Image Source: {{ page.imagesrc }}{% endif %}</p>
     {% endif %}
     {% unless page.image %}
-    <div class="site-spanimage" style="background-image: url({{ site.image }});"></div>
+    <div class="site-spanimage" style="background-image: linear-gradient(
+      rgba(0, 0, 0, 0), 
+      rgba(0, 0, 0, 0.8)
+    ), url({{ site.image }});"><p><span>{{ site.title }}</span><br><span class="site-spansubtext">{{ site.description }}</span></p></div>
     <p class="page-imagesrc">&nbsp;{% if site.imagesrc %}Image Source: {{ site.imagesrc }}{% endif %}</p>
     {% endunless %}
     <div class="page-navigation">
