@@ -18,7 +18,8 @@
     -o-background-size: cover;
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: 50% 50%;  
+    background-position: 50% 50%;
+    object-fit: cover;
 }
 .site-title {
     font-size: 24px;
@@ -191,6 +192,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: 50% 50%;  
+    object-fit: cover;
 }
 .page-aboutspanimage {
     height: 42vh;
@@ -201,6 +203,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: 50% 50%;  
+    object-fit: cover;
 }
 .page-imagesrc {
     width: -webkit-calc(100% - (#{$spacing-unit} / 2));
