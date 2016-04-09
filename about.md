@@ -1,21 +1,11 @@
 ---
 layout: page
 title: ABOUT
-image: http://i.imgur.com/zUzImht.jpg
-imagesrc: Niels Heidenreich
+image: https://www.jisc.ac.uk/sites/default/files/globe-lights-blog.jpg
+imagesrc: jisc.ac.uk
 permalink: /about/
 ---
 
-This unit explores cross-disciplinary approaches to research that fall under the rubric of ‘digital humanities’, the aim of which is to use technological tools to solve domain problems. We will begin by asking what forms digital humanities research takes, specifically how digital humanities approaches can help answer particular research questions. Since the digital humanities include such a wide range of approaches, students will learn how to frame questions, find appropriate tools and solutions, acquire the knowledge required to deploy those solutions, and present results in an accessible way.
+I started this blog as a project for a postgraduate digital humanities course. Pinning down exactly how to define digital humanities is an elusive task. Kathleen Fitzpatrick provides this straightforward definition:
 
-* Overview of major approaches and tools
-* Framing questions
-* Selecting appropriate approaches
-* Finding and learning appropriate tools
-* Managing data
-* Project management
-* Digital presentation and visualisation
-* Digital outreach and social media
-* Digital publication and data sharing
-
-This unit is cross-disciplinary, introducing approaches used by or useful for research in (e.g.) history, archaeology, language and literature, anthropology, sociology, cultural studies, political science, etc. Students are encouraged to bring their own disciplinary perspectives to the course, and will explore how their own research can benefit from digital methods.
+> For me it has to do with the work that gets done at the crossroads of digital media and traditional humanistic study. And that happens in two different ways. On the one hand, it’s bringing the tools and techniques of digital media to bear on traditional humanistic questions. But it’s also bringing humanistic modes of inquiry to bear on digital media.

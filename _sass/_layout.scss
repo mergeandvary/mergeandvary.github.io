@@ -177,7 +177,8 @@
  * Page content
  */
 .page-spanimage {
-    height: 40vh;
+    height: -webkit-calc(100vh - 210px);
+    height:         calc(100vh - 210px);
     width: 100%;
     overflow: hidden;
 }
@@ -196,7 +197,6 @@
 .page-heading {
     font-weight: 800;
     font-size: 32px;
-    font-style: italic;
     color: #777;
     letter-spacing: -1px;
     line-height: 1;
@@ -234,7 +234,6 @@
     display: block;
     font-weight: 800;
     font-size: 32px;
-    font-style: italic;
     color: #777;
     letter-spacing: -1px;
     line-height: 1;
@@ -256,7 +255,6 @@
 .post-title {
     font-weight: 800;
     font-size: 32px;
-    font-style: italic;
     text-align: center;
     color: #777;
     letter-spacing: -1px;
