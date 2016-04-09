@@ -289,8 +289,16 @@
     color: #bbb;
     letter-spacing: 24px;
     &,
+    &:link {
+        color: #bbb;
+    }
+    &,
     &:visited {
         color: #bbb;
+    }
+    &,
+    &:hover {
+        color: #333;
     }
 }
 
