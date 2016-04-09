@@ -176,7 +176,7 @@
  * Page content
  */
 .page-spanimage {
-    height: 66vh;
+    height:         calc(100vh - 210px);
     width: 100%;
     overflow: hidden;
 }
