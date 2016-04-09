@@ -6,11 +6,11 @@
   <body>
 
     {% if page.image %}
-    <img class="page-spanimage" src="{{ page.image }}"/>
+    <div class="page-spanimage" style="background-image: url({{ page.image }});"></div>
     <p class="page-imagesrc">&nbsp;{% if page.imagesrc %}Image Source: {{ page.imagesrc }}{% endif %}</p>
     {% endif %}
     {% unless page.image %}
-    <img class="site-spanimage" src="{{ site.image }}" width="100%"/>
+    <div class="site-spanimage" style="background-image: url({{ site.image }});"></div>
     <p class="page-imagesrc">&nbsp;{% if site.imagesrc %}Image Source: {{ site.imagesrc }}{% endif %}</p>
     {% endunless %}
     <div class="page-navigation">

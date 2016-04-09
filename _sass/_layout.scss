@@ -12,8 +12,12 @@
 .site-spanimage {
     height: -webkit-calc(100vh - 88px);
     height:         calc(100vh - 88px);
-    width: 100vw;
-    object-fit: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;  
 }
 .site-title {
     font-size: 24px;
@@ -179,13 +183,21 @@
 .page-spanimage {
     height: -webkit-calc(100vh - 210px);
     height:         calc(100vh - 210px);
-    width: 100vw;
-    object-fit: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;  
 }
 .page-aboutspanimage {
     height: 42vh;
-    width: 100vw;
-    object-fit: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;  
 }
 .page-imagesrc {
     width: -webkit-calc(100% - (#{$spacing-unit} / 2));
