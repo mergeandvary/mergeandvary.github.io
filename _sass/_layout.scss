@@ -10,9 +10,10 @@
     position: relative;
 }
 .site-spanimage {
+    height: -webkit-calc(100vh - 88px);
     height:         calc(100vh - 88px);
-    width: 100%;
-    overflow: hidden;
+    width: 100vw;
+    object-fit: cover;
 }
 .site-title {
     font-size: 24px;
@@ -176,9 +177,10 @@
  * Page content
  */
 .page-spanimage {
+    height: -webkit-calc(100vh - 210px);
     height:         calc(100vh - 210px);
-    width: 100%;
-    overflow: hidden;
+    width: 100vw;
+    object-fit: cover;
 }
 .page-imagesrc {
     width: -webkit-calc(100% - (#{$spacing-unit} / 2));
