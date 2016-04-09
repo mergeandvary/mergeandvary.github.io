@@ -1,5 +1,6 @@
 ---
 layout: post
+headtitle: "Love, Intimacy and the Public Sphere"
 title: "When Worlds Collide:<br>Love, Intimacy and the Public Sphere"
 description: "Zeldin (1994: 75-6) eloquently writes that people ‘have been able to introduce new meaning into [love] again and again, as surprisingly as they have transformed grain into bread and dumplings and millefeuille cakes’. Lindholm (1998) suggests that the normative form love takes often differs depending on the way the social environment is organised. For many theorists (see Bauman 1999, 2001; Beck & Beck-Gernsheim 2002), modern risk society places an emphasis on private individuals shifting for themselves by carefully selecting from the choices provided by a free and open market premised on neoliberal principles of deregulation, liberalisation, and privatisation. Superficially, the concept of individualisation seems incompatible with the dyadic notions of intimacy."
 tags: essays love intimacy publicsphere
