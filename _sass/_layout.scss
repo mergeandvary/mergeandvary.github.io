@@ -183,8 +183,8 @@
  * Page content
  */
 .page-spanimage {
-    height: -webkit-calc(100vh - 210px);
-    height:         calc(100vh - 210px);
+    height: -webkit-calc(100vh - 310px);
+    height:         calc(100vh - 310px);
     width: 100%;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -267,6 +267,28 @@
 }
 
 
+/**
+ * Share Buttons
+ */
+.social-share {
+    text-align: center;
+    letter-spacing: 10px;
+}
+.social-sharetext {
+    font-size: 7pt;
+    font-weight: 400;
+    color: #999;
+    text-align: center;
+    line-height: 2;
+    letter-spacing: 1px;
+}
+.social-shareicon {
+    font-size: 36px;
+    text-align: center;
+    line-height: 1;
+    color: #bbb;
+    letter-spacing: 24px;
+}
 
 /**
  * Posts

@@ -93,7 +93,7 @@ pre > code { border: 0; padding-right: 0; padding-left: 0; }
   .footer-col-3 { width: -webkit-calc(100% - (30px / 2)); width: calc(100% - (30px / 2)); } }
 @media screen and (max-width: 600px) { .footer-col { float: none; width: -webkit-calc(100% - (30px / 2)); width: calc(100% - (30px / 2)); } }
 /** Page content */
-.page-spanimage { height: -webkit-calc(100vh - 210px); height: calc(100vh - 210px); width: 100%; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; background-repeat: no-repeat; background-position: 50% 50%; object-fit: cover; }
+.page-spanimage { height: -webkit-calc(100vh - 310px); height: calc(100vh - 310px); width: 100%; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; background-repeat: no-repeat; background-position: 50% 50%; object-fit: cover; }
 
 .page-aboutspanimage { height: 42vh; width: 100%; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; background-repeat: no-repeat; background-position: 50% 50%; object-fit: cover; }
 
@@ -113,6 +113,13 @@ pre > code { border: 0; padding-right: 0; padding-left: 0; }
 
 .post-link { display: block; font-weight: 800; font-size: 32px; color: #777; letter-spacing: -1px; line-height: 1; }
 .post-link, .post-link:visited { color: #777; }
+
+/** Share Buttons */
+.social-share { text-align: center; letter-spacing: 10px; }
+
+.social-sharetext { font-size: 7pt; font-weight: 400; color: #999; text-align: center; line-height: 2; letter-spacing: 1px; }
+
+.social-shareicon { font-size: 36px; text-align: center; line-height: 1; color: #bbb; letter-spacing: 24px; }
 
 /** Posts */
 .post-header { margin-bottom: 30px; }
