@@ -14,7 +14,8 @@
     <p class="page-imagesrc">&nbsp;{% if site.imagesrc %}Image Source: {{ site.imagesrc }}{% endif %}</p>
     {% endunless %}
     <div class="page-navigation">
-        <a class="page-navigation" href="{{ site.baseurl }}/#postlist">&nbsp;POSTS</a>
+        {% if page.title %}<a class="page-navigation" href="{{ site.baseurl }}/">&nbsp;HOME</a>{% endif %}
+        {% unless page.title %}<a class="page-navigation" href="{{ site.baseurl }}/#postlist">&nbsp;POSTS</a>{% endunless %}
         {% for my_page in site.pages %}
           {% if my_page.title %}
           &nbsp;&nbsp;|&nbsp;
