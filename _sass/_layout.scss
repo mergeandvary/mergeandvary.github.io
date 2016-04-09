@@ -182,6 +182,11 @@
     width: 100vw;
     object-fit: cover;
 }
+.page-aboutspanimage {
+    height: 42vh;
+    width: 100vw;
+    object-fit: cover;
+}
 .page-imagesrc {
     width: -webkit-calc(100% - (#{$spacing-unit} / 2));
     width:         calc(100% - (#{$spacing-unit} / 2));
