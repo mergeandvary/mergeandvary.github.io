@@ -10,7 +10,6 @@
     position: relative;
 }
 .site-spanimage {
-    height: -webkit-calc(100vh - 88px);
     height:         calc(100vh - 88px);
     width: 100%;
     overflow: hidden;
@@ -177,8 +176,7 @@
  * Page content
  */
 .page-spanimage {
-    height: -webkit-calc(100vh - 210px);
-    height:         calc(100vh - 210px);
+    height: 66vh;
     width: 100%;
     overflow: hidden;
 }
