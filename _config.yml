@@ -1,21 +1,15 @@
-# Welcome to Jekyll!
-#
-# This config file is meant for settings that affect your whole blog, values
-# which you are expected to set up once and rarely need to edit after that.
-# For technical reasons, this file is *NOT* reloaded automatically when you use
-# 'jekyll serve'. If you change this file, please restart the server process.
-
 # Site settings
-title: FOAR705 Digital Humanities
-# email: your-email@domain.com
-description: > # this means to ignore newlines until "baseurl:"
-  This unit explores cross-disciplinary approaches to research that fall under the rubric of ‘digital humanities’, 
-  the aim of which is to use technological tools to solve domain problems.
-  and present results in an accessible way.
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "mergeandvary.github.io" # the base hostname & protocol for your site
+title: merge_andvary
+description: > 
+  General ramblings and mutterings about postgraduate higher degree research
+baseurl: "" 
+url: "mergeandvary.github.io"
+image: http://www.happytrips.com/photo/37773895/Walk-along-the-Berlin-Wall.jpg
+imagesrc: happytrips.com
+
 # twitter_username: jekyllrb
 # github_username:  mergeandvary
+# email: your-email@domain.com
 
 # Build settings
 markdown: kramdown

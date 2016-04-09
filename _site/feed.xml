@@ -1,384 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>FOAR705 Digital Humanities</title>
-    <description>This unit explores cross-disciplinary approaches to research that fall under the rubric of ‘digital humanities’,  the aim of which is to use technological tools to solve domain problems. and present results in an accessible way.
+    <title>merge_andvary</title>
+    <description>General ramblings and mutterings about postgraduate higher degree research
 </description>
     <link>mergeandvary.github.io/</link>
     <atom:link href="mergeandvary.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 07 Apr 2016 14:42:43 +1000</pubDate>
-    <lastBuildDate>Thu, 07 Apr 2016 14:42:43 +1000</lastBuildDate>
+    <pubDate>Sat, 09 Apr 2016 13:18:51 +1000</pubDate>
+    <lastBuildDate>Sat, 09 Apr 2016 13:18:51 +1000</lastBuildDate>
     <generator>Jekyll v3.0.3</generator>
     
       <item>
-        <title>Jekyll NeCTAR</title>
-        <description>&lt;p&gt;Jekyll doesn’t official support windows so I’m going to setup a NeCTAR virtual machine to run Fedora so that I can SSH in and edit my blog from my windows tablet using PuTTY or MobaXTerm.&lt;/p&gt;
+        <title>Why do Digital Humanities Projects often use Open Source Software Tools?</title>
+        <description>&lt;p&gt;In &lt;em&gt;The Magic Cauldron&lt;/em&gt;, Raymond uses rational choice theory to demonstrate why a business might find greater value in preferring open – rather than closed – source software implementations. These arguments for free open source software (FOSS) are built from Raymond’s previous discussion in &lt;em&gt;The Cathedral and the Bazaar&lt;/em&gt; regarding how FOSS ideologies create an effective environment for software development. Many of the points raised by Raymond directly relate to why a researcher might prefer FOSS to solve domain problems in digital humanities projects.&lt;/p&gt;
 
-&lt;h2 id=&quot;setting-up-a-nectar-virtual-machine-for-jekyll&quot;&gt;Setting up a NeCTAR Virtual Machine for Jekyll&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&quot;https://nectar.org.au/&quot;&gt;https://nectar.org.au/&lt;/a&gt;
-After login through the university, I go to Images in the left menu pane.&lt;/p&gt;
+&lt;p&gt;A key point Raymond raises regards constructive laziness: considering that results trump effort, beginning from a partial solution is nearly always preferable to starting from scratch. As FOSS projects are free (as in speech, &lt;em&gt;libre&lt;/em&gt;), they are readily available to be adapted and modified to any specific needs. Raymond observes that it is only through praxis that problems are truly understood: hence, it is likely that initial solutions will be inadequate and require modification or even complete rethinking. With proprietary software this means either being locked into a poor solution (because the code cannot be modified) or expending financial resources on new solutions.  Free (as in beer, &lt;em&gt;gratis&lt;/em&gt;) FOSS tools allow for rapid prototyping, thus rapid failures, and therefore rapidly better solutions without snowballing financial costs.&lt;/p&gt;
 
-&lt;p&gt;Considering my struggles with Ubuntu and that I’m familiar with Fedora, Im going to use the Fedora 23 image.&lt;/p&gt;
+&lt;p&gt;FOSS can also be used as a ‘strategic weapon’ (Raymond 2000). Free (libre) code means that similar projects are not forced to implement individual solutions in parallel, but instead can improve, modify and adapt existing project code, thus contributing back to the project. A development base built across a wide community allows for cost sharing. This also provides risk spreading by ensuring that even if the original developers leave, other developers can fill the gaps, thus preventing users from being left with projects reliant on orphaned software. This contrasts sharply with proprietary software where users are reliant on the company considering the software valuable enough to continue development and support. Furthermore, the free (gratis) nature of FOSS allows it to act as a market loss leader, preventing corporate price fixing and monopolistic control over how solutions should be implemented.&lt;/p&gt;
 
-&lt;p&gt;Select Launch Instance.&lt;/p&gt;
+&lt;p&gt;For Raymond, FOSS is particularly valuable when projects require independent peer review for verifying correctness of design and implementation (something all academic research requires). Free (libre) code translates to transparent code.  The collaborative community aspects of FOSS combine with this transparency to increase accountability and replicability. Moreover, best practices arise more rapidly as other users see different approaches to problems, provide small suggestions and questions that lead to new ways of thinking, or see previously overlooked issues. Raymond (2000) summarises this effect as ‘many eyeballs tame complexity’.&lt;/p&gt;
 
-&lt;p&gt;Give the Instance a name. Choose the Fedora 23 image from the Image Name Box. Change the flavour to m2.small as the tiny one seems a little too tiny.&lt;/p&gt;
-
-&lt;p&gt;Goto the Access &amp;amp; Security tab and select your key pair and enable SSH.&lt;/p&gt;
-
-&lt;p&gt;Hit the Launch button and wait for the machine to initialise.&lt;/p&gt;
-
-&lt;p&gt;Grab the IP address from the Instances tab.&lt;/p&gt;
-
-&lt;p&gt;Open a terminal a SSH connection with your prefered method 
-(PuTTY, Linux Terminal etc.)&lt;/p&gt;
-
-&lt;p&gt;The Fedora machine username is ec2-user 
-(I tried login as root, told me to login as ec2-user).&lt;/p&gt;
-
-&lt;h2 id=&quot;cloning-jekyll-blog-git-repo&quot;&gt;Cloning Jekyll Blog Git Repo&lt;/h2&gt;
-&lt;p&gt;Considering I’ve already set up my Jekyll blog and I just want a NeCTAR virtual machine to run Jekyll so that I can edit my blog from anywhere I can access a terminal, I’m just going to clone my existing repo so I can push from the VM.
-After SSH in, I’m going to need to install git:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;sudo dnf install git&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Then I clone my repo:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;git clone https://github.com/mergeandvary/mergeandvary.github.io.git&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Now I cd into my clone repo directory (tab completion is useful here!)&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;mergeandvary.github.io&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;I’ve already got a gem file setup from previously. But I just double check its contents with cat:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;cat Gemfile&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Contents of Gemfile:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nb&quot;&gt;source&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;https://rubygems.org&#39;&lt;/span&gt;
-gem &lt;span class=&quot;s1&quot;&gt;&#39;github-pages&#39;&lt;/span&gt;, group: :jekyll_plugins&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;h2 id=&quot;installing-jekyll-on-vm&quot;&gt;Installing Jekyll on VM&lt;/h2&gt;
-&lt;p&gt;Now I’m ready to install Jekyll:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;sudo dnf install ruby-devel redhat-rpm-config gcc zlib-devel
-gem install bundler
-bundle install&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;I initially had errors from bundle install, so I tracked down the missing packages: gcc. After that I had errors with nokogiri about zlib. I already had zlib installed but not zlib-devel so I install that also. After that everything worked.&lt;/p&gt;
-
-&lt;p&gt;Now I try a localhost server:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;bundle &lt;span class=&quot;nb&quot;&gt;exec &lt;/span&gt;jekyll serve&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;And I get the error about javascript, so I install nodejs as per my previous guide:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;sudo dnf install nodejs&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;h2 id=&quot;cant-access-localhost-remotely&quot;&gt;Can’t Access Localhost Remotely&lt;/h2&gt;
-&lt;p&gt;However, now we run into another problem. We aren’t on the local machine so we can’t access localhost. This is where X forwarding over SSH comes in.
-First I install firefox on my VM:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;sudo dnf install firefox&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;I also need xorg-x11-xauth to allow for X forwarding over SSH:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;sudo dnf install xorg-x11-xauth&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;I have to get 114mb of packages, so time for a cup of tea and I’ll come back once its done. Once that is done we need quit out of our SSH session and relaunch it with X forwarding capabilities. There probably is a better method to do this, but it works well enough and it is easy so I’m just doing it this way. 
-Now I can launch firefox from my SSH session. I’ll use the &amp;amp; ampersand at the end because I also want to continue using my terminal to run the jekyll server:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;firefox &amp;amp;
-bundle &lt;span class=&quot;nb&quot;&gt;exec &lt;/span&gt;jekyll serve&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;It’s pretty slow going to do it this way – firefox takes a while to start up. I’m sure @brian will have some better suggestions for accessing a localhost address remotely. This is a pretty terrible way to achieve this.&lt;/p&gt;
-
-&lt;h2 id=&quot;writing-a-post&quot;&gt;Writing a Post&lt;/h2&gt;
-&lt;p&gt;I’ve already got my blog setup in terms of style sheets so all I need to do is write a blog post. So I open the _posts folder:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;_posts&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Seeing as I’ve got an X over SSH session running, I’m just going to use gedit as my text editor:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;sudo dnf install gedit&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Though really I think I prefer nano in the terminal as it is a little quicker.&lt;/p&gt;
-
-&lt;p&gt;Now I make my post:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;gedit 2016-04-07-Jekyll-on-NeCTAR.markdown&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;I need to add a YAML front matter header&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;---
-layout: post
-title:  &lt;span class=&quot;s2&quot;&gt;&quot;Jekyll NeCTAR&quot;&lt;/span&gt;
-description: &lt;span class=&quot;s2&quot;&gt;&quot;Jekyll doesn&#39;t official support windows so I&#39;m going to setup a NeCTAR virtual machine to run Fedora so that I can SSH in and edit my blog from my windows tablet using PuTTY or MobaXTerm.&quot;&lt;/span&gt;
-categories: jekyll nectar ssh
----&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;And then after that I add my post in plain text and use markdown to add headings etc.
-I save that. Run Jekyll server to build it and maybe check it out on my terrible Firefox on X over SSH method if I really. Then I can commit it and push back to my github. Also make sure you use &lt;code class=&quot;highlighter-rouge&quot;&gt;cd ..&lt;/code&gt; to go back a directory because you need to build and commit from the base directory.&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; ..
-bundle &lt;span class=&quot;nb&quot;&gt;exec &lt;/span&gt;jekyll build
-git commit -a -m “Jekyll nectar post”
-git push origin master&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
+&lt;p&gt;FOSS is frequently criticised as having a free rider problem: why submit patches if doing so only benefits others? Firstly, as noted, academic research requires peer review: obfuscating methods only hinders this process. Moreover, beyond selecting appropriate approaches to research, it is rarely methods that make research valuable. Rather, it is how researchers analyse and interpret collected data so as to advance the existing knowledge in their field. Additionally, according to game theory, whilst intuitively it seems altruistic to submit code to FOSS projects, it is, in fact, optimistically selfish. The cost has already been incurred in creating patches. By not submitting patches, the cost of maintaining patches for subsequent updates falls on the patch holder. Merging patches with source places that cost back onto the community of developers that maintain the project. Furthermore, submission of the patch fosters collaborative involvement amongst the community and therefore increases development.&lt;/p&gt;
 </description>
-        <pubDate>Thu, 07 Apr 2016 00:00:00 +1000</pubDate>
-        <link>mergeandvary.github.io/jekyll/nectar/ssh/2016/04/07/Jekyll-on-NeCTAR.html</link>
-        <guid isPermaLink="true">mergeandvary.github.io/jekyll/nectar/ssh/2016/04/07/Jekyll-on-NeCTAR.html</guid>
+        <pubDate>Fri, 08 Apr 2016 00:00:00 +1000</pubDate>
+        <link>mergeandvary.github.io/2016/04/08/why-do-digital-humanities-use-foss.html</link>
+        <guid isPermaLink="true">mergeandvary.github.io/2016/04/08/why-do-digital-humanities-use-foss.html</guid>
         
+        <category>digitalhumanities</category>
         
-        <category>jekyll</category>
+        <category>dh</category>
         
-        <category>nectar</category>
+        <category>writing</category>
         
-        <category>ssh</category>
+        <category>raymond</category>
         
-      </item>
-    
-      <item>
-        <title>Welcome to Jekyll!</title>
-        <description>&lt;p&gt;&lt;img src=&quot;http://timjames.me/img/jekyll/feature.jpg&quot; alt=&quot;github jekyll image&quot; /&gt;
-&lt;small&gt;source: http://timjames.me/img/jekyll/feature.jpg&lt;/small&gt;&lt;/p&gt;
-
-&lt;p&gt;This is my first foray into the world of Jekyll so I will be documenting my progress here. It seems scary at first, but as you get into it it really isn’t as terrifying as it seems, I promise!&lt;/p&gt;
-
-&lt;h2 id=&quot;installing-jekyll-on-fedora&quot;&gt;Installing Jekyll on Fedora&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&quot;http://linuxsuperuser.com/install-jekyll-on-fedora-23/&quot;&gt;http://linuxsuperuser.com/install-jekyll-on-fedora-23/&lt;/a&gt;&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;sudo dnf install ruby-devel
-sudo dnf install redhat-rpm-config
-sudo gem install jekyll&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Installing Jekyll on Fedora was a breeze.&lt;/p&gt;
-
-&lt;h2 id=&quot;getting-started&quot;&gt;Getting Started…&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&quot;https://jekyllrb.com/docs/quickstart/&quot;&gt;https://jekyllrb.com/docs/quickstart&lt;/a&gt;&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;jekyll new nameofblog
-cd nameofblog
-jekyll serve&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Now that the jekyll server is running, we can fire up our web browser and navigate to: &lt;a href=&quot;http://localhost:4000&quot;&gt;http://localhost:4000&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;failing-early-failing-often-lets-get-some-content&quot;&gt;Failing Early, Failing Often: Lets get some content.&lt;/h2&gt;
-&lt;p&gt;Jekyll can feel a little intimidating at first. No point trying to read mountains of documentation on all the various technical features, I’m just going to jump in. Best practice for learning FOSS is to fail early/often to learn better solutions and approaches: theory is no substitute for praxis. Luckily, we have the internet and surely others have failed before us, so lets employ our constructive laziness!&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;http://lmgtfy.com/?q=jekyll+tutorial&quot;&gt;http://lmgtfy.com/?q=jekyll+tutorial&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Okay lets go.&lt;/p&gt;
-
-&lt;h2 id=&quot;customising-appearance&quot;&gt;Customising Appearance&lt;/h2&gt;
-&lt;p&gt;Before I go and push my blog to a github page, I’m going to have a go at editing things locally and viewing them on the localhost jekyll server.
-We can change the settings of our landing page in the _config.yml file. I’m using &lt;a href=&quot;https://www.sublimetext.com/3&quot;&gt;sublimetext3&lt;/a&gt; for my text editor as multiple cursors and extensive plugin support cannot be beaten in my eyes (plus its cross platform compatible which is super important for me).&lt;/p&gt;
-
-&lt;p&gt;If you open up the _config.yml you will notice that it has the same text as the localhost landing page. Editing it seems pretty straightforward to me. Just edit the text after the colon for the particular section. Let’s give it a go.&lt;/p&gt;
-
-&lt;p&gt;I edited the part after title, but it didn’t seem like my page was updating when I hit refresh on my browser for the localhost:4000 page. So I quit the jekyll server from terminal by hitting Ctrl+C and then re ran it&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;jekyll serve&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;And now I can see my changes. 
-Not really keen on having my email shared on my blog, so I deleted that line. Updated my description. Going well so far. Now that I’ve got some basic content on my page, I’m going to look at changing the style sheet for the blog.&lt;/p&gt;
-
-&lt;h2 id=&quot;sass-scss-style-sheets&quot;&gt;SASS: SCSS Style Sheets&lt;/h2&gt;
-&lt;p&gt;The Style Sheet is in my-jekyll-folder/css/main.scss
-First up I’m going to change the font family from Helevetica Neue to Source Sans Pro which is a fantastic freely available grotesque sans serif font developed by Paul D Hunt for Adobe. It is distributed under the SIL Open Font license. So in the spirit of FOSS, this is my font!&lt;/p&gt;
-
-&lt;p&gt;Some other good sans-serif free fonts are OpenSans, Liberation Sans, Droid Sans, Roboto, Bebas Neue&lt;/p&gt;
-
-&lt;p&gt;Pretty easy so far.
-I’ve noticed that other changes outside of _config.yml auto update, so no need to restart the server when making changes here. Just hit refresh
-The templates for the pages and posts are in my-jekyll-folder/_layouts and you can edit the header and foot html in my-jekyll-folder/_includes
-_sass/_layout.scss&lt;/p&gt;
-
-&lt;p&gt;The main style changes occur in my-jekyll-folder/_sass/_layout.scss&lt;/p&gt;
-
-&lt;p&gt;So I fire up sublimetext3 and open the file.&lt;/p&gt;
-
-&lt;p&gt;I’m not super familiar with SASS style sheets, but looks fairly straight forward. First thing I want to do is change my Post Title style for my posts. So I scroll down to the Posts section in my text editor:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-css&quot; data-lang=&quot;css&quot;&gt;&lt;span class=&quot;nc&quot;&gt;.post-title&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nl&quot;&gt;font-weight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;800&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;nl&quot;&gt;font-style&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;italic&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;nl&quot;&gt;font-size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;42px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;nl&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;#777&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;nl&quot;&gt;letter-spacing&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;-1px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;nl&quot;&gt;line-height&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-    &lt;span class=&quot;err&quot;&gt;@include&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;media-query($on-laptop)&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;nl&quot;&gt;font-size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;36px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;err&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Ah-Ha! .post-title seems to be what I’m looking for! A quick change of the font size and refresh in the browser confirms this.&lt;/p&gt;
-
-&lt;p&gt;I want to change the weight of the font for post titles so I add font-weight to the section. From the main.scss file I know that our standard font weight is 400, but I decide I want a lighter standard weight so I change it to 200 and then I want the header to be Extra Bold / Heavy so I choose 800 for the post title weight. I also want to change the post title font colour to be a lighter gray colour so I add color: #777 which is short hand for #777777 which is the rgb hexadecimal colour code.&lt;/p&gt;
-
-&lt;p&gt;W3schools has lots of info on CSS editing:   &lt;a href=&quot;http://www.w3schools.com/css/css_font.asp&quot;&gt;http://www.w3schools.com/css/css_font.asp&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;uploading-to-github&quot;&gt;Uploading to Github&lt;/h2&gt;
-&lt;p&gt;Now that I’ve got the basic styles set up how I want and I started putting this content in the example post in the _posts folder, I’m going to have a go at putting this up on github.&lt;/p&gt;
-
-&lt;p&gt;I’m following the instruction here: &lt;a href=&quot;https://pages.github.com/&quot;&gt;https://pages.github.com/&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;I also saw these instructions from git hub about using bundler so I followed them: &lt;a href=&quot;https://help.github.com/articles/setting-up-your-github-pages-site-locally-with-jekyll/&quot;&gt;https://help.github.com/articles/setting-up-your-github-pages-site-locally-with-jekyll/&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;After I used bundler I needed to install nodejs:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;sudo dnf install nodejs&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Now that I’ve got everything set up I go to github and &lt;a href=&quot;https://github.com/new&quot;&gt;create a new repository&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Make sure to set the repository name as yourusername.github.io&lt;/p&gt;
-
-&lt;p&gt;Now that the repo is set up, open terminal and go to the jekyll page:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;git init
-git add *
-git commit -a -m &quot;first commit&quot;
-git remote add origin https://github.com/user/repo.git
-git push -u origin master&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Now when we make changes commit the files and the push the commmits&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;git commit -a -m &quot;commit message&quot;
-git push origin --all&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;The jekyll pages are at is at &lt;a href=&quot;http://mergeandvary.github.io/&quot;&gt;http://mergeandvary.github.io/&lt;/a&gt;
-mergeandvary is my github page, just swap that part for your own username.
-username.github.io&lt;/p&gt;
-
-&lt;h2 id=&quot;learning-markdown&quot;&gt;Learning Markdown&lt;/h2&gt;
-&lt;p&gt;My initial blogging attempts were all done with a mix of markdown and html. Jekyll is great in that it lets you mix things up. However, for the sake of consistency I decided to learn a bit about markdown formatting and stick to one style as much as I can.&lt;/p&gt;
-
-&lt;p&gt;Here is a great &lt;a href=&quot;https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet&quot;&gt;markdown cheat sheet&lt;/a&gt;&lt;/p&gt;
-</description>
-        <pubDate>Sun, 03 Apr 2016 00:00:00 +1100</pubDate>
-        <link>mergeandvary.github.io/jekyll/update/2016/04/03/welcome-to-jekyll.html</link>
-        <guid isPermaLink="true">mergeandvary.github.io/jekyll/update/2016/04/03/welcome-to-jekyll.html</guid>
+        <category>esr</category>
         
-        
-        <category>jekyll</category>
-        
-        <category>update</category>
-        
-      </item>
-    
-      <item>
-        <title>Setting up Nectar Cloud with X forwarding over SSH</title>
-        <description>&lt;p&gt;&lt;img src=&quot;https://nectar.org.au/wp-content/uploads/2015/10/nectardirectorate-logo.png&quot; alt=&quot;Nectar&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;The government spent a ton of money ($4.94 million allocated in 2015) on National eResearch Collaboration Tools and Resources (NeCTAR) and we get two free machines through the university, so lets set one up.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://nectar.org.au/&quot;&gt;https://nectar.org.au/&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;setting-up-nectar&quot;&gt;Setting up NeCTAR&lt;/h2&gt;
-&lt;p&gt;Goto Cloud Login&lt;/p&gt;
-
-&lt;p&gt;After login through Macquarie, go to Images in the left menu pane.
-Find the NeCTAR Ubuntu 14.04 Image and choose “Launch Instance” from right side.&lt;/p&gt;
-
-&lt;p&gt;You can then give your instance a name. Choose your flavour which basically is just how powerful you want your VM to be. Larger sizes increase RAM, Disk Space, and Processing Power – however, they also use more of your NeCTAR alocation.&lt;/p&gt;
-
-&lt;p&gt;On the right hand side you can see the details of your flavour and how much of your allocation that it will use. I’m going for the small, as tiny seemed a little too, well, tiny…&lt;/p&gt;
-
-&lt;p&gt;Don’t forget to add your SSH key in the Access &amp;amp; Security Tab! I thankfully have Petra’s blog post to follow, yet despite the warnings I was overly eager to set up the VM and missed this step. Had to delete it and restart, because I also think I can just dive in without following instructions… :p&lt;/p&gt;
-
-&lt;p&gt;Choose your Key Pair and Check the SSH box&lt;/p&gt;
-
-&lt;p&gt;After hitting the green Launch button, the instance will build in the Instances tab on the left (Surprise! Who would have thought.)&lt;/p&gt;
-
-&lt;h2 id=&quot;launching-into-ssh&quot;&gt;Launching into SSH.&lt;/h2&gt;
-&lt;p&gt;After the Instance is initialised, get the IP address from Instances tab
-Open Terminal. (I’m using Linux for initial tests. I will switch to Windows once I get it working on Linux).
-I saved my key file to ~/.ssh/Nectar_Key so I ran&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;ssh -i ~/.ssh/Nectar_Key ubuntu@ip.address.of.instance&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;And I got this error!&lt;/p&gt;
-
-&lt;p&gt;INSERT IMAGE HERE!!!&lt;/p&gt;
-
-&lt;p&gt;So I had to use chmod 600 to change my key’s permissions to only give me (file owner) read/write access (the 6 which is 2 + 4 i.e. read + write bits) and no one else in the file group or outside the file group (the two 0s).
-Then I ran a simple apt-get update / apt-get dist-upgrade on the VM to make sure everything was up to date.&lt;/p&gt;
-
-&lt;h2 id=&quot;now-on-to-the-fun-part-forwarding-x-over-ssh&quot;&gt;Now on to the fun part. Forwarding X over SSH&lt;/h2&gt;
-&lt;p&gt;the -X flag for ssh provides X forwarding e.g.&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;ssh -i ~/.ssh/Nectar_Key ubuntu@ip.address -X&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;However, I quickly noticed that because we are using a Server image of ubuntu, no X11 tools or GUI elements are installed. I installed them with the following command&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;sudo apt-get install ubuntu-desktop&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;This command needs to fetch about 559mb of archives and uses 2,128mb of space (2.0gb pretty much!). So this is where I’m glad that I chose the Small flavour rather than the Tiny one, as the extra 25gb of space goes a long way!
-Looks like about 25min wait time on MQ network, so I’ll leave this running in my terminal and go do some other work in the meantime. See you soon!&lt;/p&gt;
-
-&lt;p&gt;And I’m back…
-Ubuntu desktop has installed. Now I exist my SSH session and relogin with X forwarding enabled.&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;ssh -i ~/.ssh/Nectar_Key ubuntu@ip.address -X&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;I know that nautilus is the file browser in Ubuntu, so I type the command &lt;code class=&quot;highlighter-rouge&quot;&gt;nautilus&lt;/code&gt; and hit enter&lt;/p&gt;
-
-&lt;p&gt;Success!&lt;/p&gt;
-
-&lt;p&gt;Now on to Windows!&lt;/p&gt;
-
-&lt;h2 id=&quot;the-joy-sarcasm-of-windows&quot;&gt;The Joy &amp;lt;/sarcasm&amp;gt; of Windows.&lt;/h2&gt;
-&lt;p&gt;PuTTY has the ability for X11 forwarding over SSH.
-HOWEVER, as we’re not in Kansas (Linux) anymore, that means we also need an X server like Xming. 
-As I’m not really that keen on setting up an X server in windows, I’m going to go another route which is using MobaXTerm. MobaXTerm is a terminal program for windows that has an X11 server built in and is free for personal use.
-&lt;a href=&quot;http://mobaxterm.mobatek.net/download.html&quot;&gt;http://mobaxterm.mobatek.net/download.html&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;When you open mobaXterm you get a home page like this:&lt;/p&gt;
-
-&lt;p&gt;IMAGE FILE MISSING&lt;/p&gt;
-
-&lt;p&gt;Select Start local terminal
-And then the commands are the same as before. I recommend saving your Nectar_Key pem file on the Desktop. Then you can use the following command:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;ssh -i Desktop/Nectar_Key ubuntu@ip.address -X
-nautilus&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Success!&lt;/p&gt;
-
-&lt;h2 id=&quot;terminal-tips&quot;&gt;Terminal Tips&lt;/h2&gt;
-&lt;p&gt;Don’t forget you can use Ctrl+C as a terminal break command. Nautilus will be running in the terminal window so just switch back to the terminal and hit Ctrl+C to end the process if you need to. You can use an ampersand &amp;amp; at the end of a command to run it as a separate process thread if you still need to do work in the terminal window at the same time. e.g. &lt;code class=&quot;highlighter-rouge&quot;&gt;nautilus &amp;amp;&lt;/code&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;a-final-note-reseting-nectar-vm&quot;&gt;A Final Note: Reseting NeCTAR VM&lt;/h2&gt;
-&lt;p&gt;One thing I noticed was that after I installed ubuntu-desktop. Apt-get was telling me that my system needed a restart. Not quite sure how I go about that. I’m going to try in the SSH terminal:
-&lt;code class=&quot;highlighter-rouge&quot;&gt;sudo shutdown -r now&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;And see if my Nectar VM blows up! 
-Basically the shutdown command tells the machine to, well, shutdown… The -r flag is for reboot and the now at the end tells it to do it now. Pretty self explanatory. 
-After you run the command terminal / putty etc. will kick you out of the SSH session as the machine has gone offline. I’m going to try reconnecting now and see what happens.
-And after I try reconnecting I get this scary message:&lt;/p&gt;
-
-&lt;p&gt;IMAGE MISSING&lt;/p&gt;
-
-&lt;p&gt;Considering I just rebooted (and its probably related to that) and I’m not that worried about the integrity of my VM, I’m just going to  delete my key and start again:
-&lt;code class=&quot;highlighter-rouge&quot;&gt;ssh-keygen -R ip.address.of.vm&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;It finds my host key and removes it from my keychain. Then I just login again. Accept the new ECDSA fingerprint and we’re away!&lt;/p&gt;
-</description>
-        <pubDate>Sun, 03 Apr 2016 00:00:00 +1100</pubDate>
-        <link>mergeandvary.github.io/nectar/nectarcloud/nectarresearch/research/2016/04/03/setting-up-nectar-cloud.html</link>
-        <guid isPermaLink="true">mergeandvary.github.io/nectar/nectarcloud/nectarresearch/research/2016/04/03/setting-up-nectar-cloud.html</guid>
-        
-        
-        <category>nectar</category>
-        
-        <category>nectarcloud</category>
-        
-        <category>nectarresearch</category>
-        
-        <category>research</category>
         
       </item>
     

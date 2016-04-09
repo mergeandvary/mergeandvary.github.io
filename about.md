@@ -1,6 +1,8 @@
 ---
 layout: page
-title: About
+title: ABOUT
+image: http://i.imgur.com/zUzImht.jpg
+imagesrc: Niels Heidenreich
 permalink: /about/
 ---
 

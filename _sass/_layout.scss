@@ -9,7 +9,12 @@
     // Positioning context for the mobile navigation icon
     position: relative;
 }
-
+.site-spanimage {
+    height: -webkit-calc(100vh - 88px);
+    height:         calc(100vh - 88px);
+    width: 100%;
+    overflow: hidden;
+}
 .site-title {
     font-size: 24px;
     color: #e7e7e7;
@@ -171,17 +176,43 @@
 /**
  * Page content
  */
+.page-spanimage {
+    height: 40vh;
+    width: 100%;
+    overflow: hidden;
+}
+.page-imagesrc {
+    width: -webkit-calc(100% - (#{$spacing-unit} / 2));
+    width:         calc(100% - (#{$spacing-unit} / 2));
+    font-size: 9pt;
+    text-align: right;
+    color: #bbb;
+}
+
 .page-content {
     padding: $spacing-unit 0;
 }
 
 .page-heading {
     font-weight: 800;
-    font-size: 42px;
+    font-size: 32px;
     font-style: italic;
     color: #777;
     letter-spacing: -1px;
     line-height: 1;
+}
+
+.page-navigation {
+    font-weight: 400;
+    font-size: 12px;
+    text-align: center;
+    color: #bbb;
+    letter-spacing: 5pt;
+    line-height: 2;
+    &,
+    &:visited {
+        color: #777;
+    }
 }
 
 .post-list {
@@ -195,13 +226,14 @@
 
 .post-meta {
     font-size: $small-font-size;
+    text-align: center;
     color: $grey-color;
 }
 
 .post-link {
     display: block;
     font-weight: 800;
-    font-size: 42px;
+    font-size: 32px;
     font-style: italic;
     color: #777;
     letter-spacing: -1px;
@@ -223,8 +255,9 @@
 
 .post-title {
     font-weight: 800;
-    font-size: 42px;
+    font-size: 32px;
     font-style: italic;
+    text-align: center;
     color: #777;
     letter-spacing: -1px;
     line-height: 1;
@@ -241,7 +274,7 @@
         font-size: 26px;
         font-weight: 800;
         font-style: italic;
-        margin-top: 42px;
+        margin-top: 32px;
         color: #777;
         letter-spacing: -1px;
         @include media-query($on-laptop) {
