@@ -52,7 +52,9 @@ pre > code { border: 0; padding-right: 0; padding-left: 0; }
 .icon > svg path { fill: #828282; }
 
 /** Site header */
-.site-spanimage { height: -webkit-calc(100vh - 88px); height: calc(100vh - 88px); width: 100%; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; background-repeat: no-repeat; background-position: 50% 50%; object-fit: cover; }
+.site-spanimagegradient { height: -webkit-calc(100vh - 88px); height: calc(100vh - 88px); width: 100%; }
+
+.site-spanimage { height: -webkit-calc(100vh - 88px); height: calc(100vh - 88px); width: 100%; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; background-repeat: no-repeat; background-position: 50% 75%; background-attachment: fixed; }
 .site-spanimage p { position: absolute; bottom: 100px; left: 12px; right: 12px; font-size: 26pt; font-weight: 800; line-height: 24pt; color: #eee; }
 .site-spanimage span { padding-left: 10px; padding-right: 10px; }
 
@@ -95,9 +97,9 @@ pre > code { border: 0; padding-right: 0; padding-left: 0; }
   .footer-col-3 { width: -webkit-calc(100% - (30px / 2)); width: calc(100% - (30px / 2)); } }
 @media screen and (max-width: 600px) { .footer-col { float: none; width: -webkit-calc(100% - (30px / 2)); width: calc(100% - (30px / 2)); } }
 /** Page content */
-.page-spanimage { height: -webkit-calc(100vh - 310px); height: calc(100vh - 310px); width: 100%; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; background-repeat: no-repeat; background-position: 50% 50%; object-fit: cover; }
+.page-spanimage { height: -webkit-calc(100vh - 310px); height: calc(100vh - 310px); width: 100%; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; background-repeat: no-repeat; background-position: 50% 100%; background-attachment: fixed; }
 
-.page-aboutspanimage { height: 42vh; width: 100%; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; background-repeat: no-repeat; background-position: 50% 50%; object-fit: cover; }
+.page-aboutspanimage { height: 42vh; width: 100%; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; background-repeat: no-repeat; background-position: 50% 100%; background-attachment: fixed; }
 
 .page-imagesrc { width: -webkit-calc(100% - (30px / 2)); width: calc(100% - (30px / 2)); font-size: 9pt; text-align: right; color: #bbb; }
 

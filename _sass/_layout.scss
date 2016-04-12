@@ -1,6 +1,11 @@
 /**
  * Site header
  */
+ .site-spanimagegradient {
+    height: -webkit-calc(100vh - 88px);
+    height:         calc(100vh - 88px);
+    width: 100%;
+}
 .site-spanimage {
     height: -webkit-calc(100vh - 88px);
     height:         calc(100vh - 88px);
@@ -10,8 +15,8 @@
     -o-background-size: cover;
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: 50% 50%;
-    object-fit: cover;
+    background-position: 50% 75%;  
+    background-attachment: fixed;
     
     p {
         position: absolute;
@@ -204,8 +209,8 @@
     -o-background-size: cover;
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: 50% 50%;  
-    object-fit: cover;
+    background-position: 50% 100%;  
+    background-attachment: fixed;
 }
 .page-aboutspanimage {
     height: 42vh;
@@ -215,8 +220,8 @@
     -o-background-size: cover;
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: 50% 50%;  
-    object-fit: cover;
+    background-position: 50% 100%;  
+    background-attachment: fixed;
 }
 .page-imagesrc {
     width: -webkit-calc(100% - (#{$spacing-unit} / 2));
