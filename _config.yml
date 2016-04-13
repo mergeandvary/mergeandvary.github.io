@@ -4,8 +4,8 @@ description: >
   Postgraduate HDR ramblings and mutterings
 baseurl: "" 
 url: "mergeandvary.github.io"
-image: http://www.happytrips.com/photo/37773895/Walk-along-the-Berlin-Wall.jpg
-imagesrc: happytrips.com
+image: https://upload.wikimedia.org/wikipedia/en/e/e2/Rivera_frescos_02.jpg
+imagesrc: Wikimedia (Diego Rivera - Detroit Industry Mural)
 
 # twitter_username: jekyllrb
 # github_username:  mergeandvary
