@@ -4,7 +4,7 @@ title: "Why do Digital Humanities Projects often use Open Source Software Tools?
 description: In     The Magic Cauldron, Raymond uses rational choice theory to demonstrate why a business might find greater value in preferring open – rather than closed – source software implementations. These arguments for free open source software (FOSS) are built from Raymond's previous discussion in The Cathedral and the Bazaar regarding how FOSS ideologies create an effective environment for software development. Many of the points raised by Raymond directly relate to why a researcher might prefer FOSS to solve domain problems in digital humanities projects.
 tags: digitalhumanities dh writing raymond esr
 author: Cooper Beilby
-image: http://i.imgur.com/zUzImht.jpg
+image: fosswater.jpg
 imagesrc: Niels Heidenreich
 ---
 

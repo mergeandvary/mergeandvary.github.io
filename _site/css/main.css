@@ -55,10 +55,10 @@ pre > code { border: 0; padding-right: 0; padding-left: 0; }
 .site-spanimagegradient { height: -webkit-calc(100vh - 88px); height: calc(100vh - 88px); width: 100%; }
 
 .site-spanimage { height: -webkit-calc(100vh - 88px); height: calc(100vh - 88px); width: 100%; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; background-repeat: no-repeat; background-position: 50% 75%; background-attachment: fixed; }
-.site-spanimage p { position: absolute; bottom: 100px; left: 12px; right: 12px; text-align: right; font-size: 26pt; font-weight: 800; line-height: 24pt; color: #eee; }
-.site-spanimage span { padding-left: 10px; padding-right: 10px; }
+.site-spanimage p { position: absolute; bottom: 70px; right: 10px; text-align: right; font-size: 18pt; font-weight: 800; color: #bbb; }
+.site-spanimage span { padding-left: 16px; padding-right: 16px; padding-top: 4px; background-color: #fdfdfd; }
 
-.site-spansubtext { font-size: 12pt; color: #eee; font-weight: 400; line-height: 10pt; }
+.site-spansubtext { font-size: 12pt; color: #777; font-weight: 400; }
 
 .site-title { font-size: 24px; color: #e7e7e7; font-weight: 800; line-height: 56px; letter-spacing: -1px; margin-bottom: 0; float: left; }
 .site-title, .site-title:visited { color: #e7e7e7; }
@@ -107,8 +107,9 @@ pre > code { border: 0; padding-right: 0; padding-left: 0; }
 
 .page-heading { font-weight: 800; font-size: 32px; color: #777; letter-spacing: -1px; line-height: 1; }
 
-.page-navigation { font-weight: 400; font-size: 12px; text-align: center; color: #bbb; letter-spacing: 5pt; line-height: 2; }
-.page-navigation, .page-navigation:visited { color: #777; }
+.page-navigation { height: 30px; background-color: #fdfdfd; }
+.page-navigation p { text-align: center; position: relative; top: 50%; transform: translateY(-50%); font-weight: 400; font-size: 12px; color: #bbb; letter-spacing: 5pt; }
+.page-navigation a, .page-navigation a:visited { color: #777; }
 
 .post-list { margin-left: 0; list-style: none; }
 .post-list > li { margin-bottom: 30px; }

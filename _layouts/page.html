@@ -1,33 +1,32 @@
 <!DOCTYPE html>
 <html>
 
-  {% include head.html %}
+    {% include head.html %}
 
-  <body>
-    {% if page.image %}
-    <div class="page-aboutspanimage" style="background-image: url({{ page.image }});"></div>
-    <p class="page-imagesrc">&nbsp;{% if page.imagesrc %}Image Source: {{ page.imagesrc }}{% endif %}</p>
-    {% endif %}
-    <div class="page-navigation">
-        <a class="page-navigation" href="{{ site.baseurl }}/">&nbsp;HOME</a>
-        {% for my_page in site.pages %}
-          {% if my_page.title %}
-          &nbsp;&nbsp;|&nbsp;
-          <a class="page-navigation" href="{{ my_page.url | prepend: site.baseurl }}">&nbsp;{{ my_page.title }}</a>
-          {% endif %}
-        {% endfor %}
-    </div>
-    <div class="page-content">
-      <header class="post-header">
-        <h1 class="post-title">{{ page.title }}</h1>
-      </header>
-      <div class="wrapper">
-        {{ content }}
-      </div>
-    </div>
+    <body>
+        {% if page.image %}
+        <div class="page-aboutspanimage" style="background-image: url({{ page.image }});"></div>
+        <p class="page-imagesrc">&nbsp;{% if page.imagesrc %}Image Source: {{ page.imagesrc }}{% endif %}</p>
+        {% endif %}
+        <div class="page-navigation">
+            <p>{% if page.title %}<a href="{{ site.baseurl }}/">&nbsp;HOME</a>{% endif %}
+            {% unless page.title %}<a href="{{ site.baseurl }}/#postlist">&nbsp;POSTS</a>{% endunless %}
+            {% for my_page in site.pages %}
+            {% if my_page.title %}&nbsp;&nbsp;|&nbsp;<a href="{{ my_page.url | prepend: site.baseurl }}">&nbsp;{{ my_page.title }}</a>{% endif %}
+            {% endfor %}</p>
+        </div>
+        
+        <div class="page-content">
+            <header class="post-header">
+                <h1 class="post-title">{{ page.title }}</h1>
+            </header>
+            <div class="wrapper">
+                {{ content }}
+            </div>
+        </div>
 
-    {% include footer.html %}
+        {% include footer.html %}
 
-  </body>
+    </body>
 
 </html>
