@@ -14,6 +14,7 @@
         <p><span>{{ site.title }}</span></p></div>
         <p class="page-imagesrc">&nbsp;{% if site.imagesrc %}Image Source: {{ site.imagesrc }}{% endif %}</p>
         <a name="postlist"></a>
+        {% endunless %}
         <div class="page-navigation">
             <p>{% if page.title %}<a href="{{ site.baseurl }}/">&nbsp;HOME</a>{% endif %}
             {% unless page.title %}<a href="{{ site.baseurl }}/#postlist">&nbsp;POSTS</a>{% endunless %}
@@ -21,8 +22,6 @@
             {% if my_page.title %}&nbsp;&nbsp;|&nbsp;<a href="{{ my_page.url | prepend: site.baseurl }}">&nbsp;{{ my_page.title }}</a>{% endif %}
             {% endfor %}</p>
         </div>
-        
-        {% endunless %}
         
         <div class="page-content">
 
