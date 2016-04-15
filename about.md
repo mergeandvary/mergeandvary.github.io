@@ -1,7 +1,7 @@
 ---
 layout: page
 title: ABOUT
-image: https://www.jisc.ac.uk/sites/default/files/globe-lights-blog.jpg
+image: globe-lights-blog.jpg
 imagesrc: jisc.ac.uk
 permalink: /about/
 ---

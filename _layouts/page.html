@@ -5,7 +5,7 @@
 
     <body>
         {% if page.image %}
-        <div class="page-aboutspanimage" style="background-image: url({{ page.image }});"></div>
+        <div class="page-aboutspanimage" style="background-image: url({{ site.baseurl }}/images/{{ page.image }});"></div>
         <p class="page-imagesrc">&nbsp;{% if page.imagesrc %}Image Source: {{ page.imagesrc }}{% endif %}</p>
         {% endif %}
         <div class="page-navigation">
@@ -24,8 +24,6 @@
                 {{ content }}
             </div>
         </div>
-
-        {% include footer.html %}
 
     </body>
 
