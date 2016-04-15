@@ -3,8 +3,9 @@
  */
 
 .site-spanimage {
-    height: -webkit-calc(100vh - 88px);
-    height:         calc(100vh - 88px);
+    height: 42%;
+    height: -webkit-calc(100% - 88px);
+    height:         calc(100% - 88px);
     width: 100%;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -12,8 +13,10 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: 50% 75%;  
+    @include media-query($on-palm) {
+        background-attachment: scroll;
+    }
     background-attachment: fixed;
-    
     p {
         position: absolute;
         bottom: 70px;
@@ -22,6 +25,9 @@
         font-size: 18pt;
         font-weight: 800;
         color: $text-color-light;
+        @include media-query($on-palm) {
+            visibility: hidden;
+        }
     }
     span {
         padding-left: 16px;
@@ -35,6 +41,7 @@
  * Page content
  */
 .page-spanimage {
+    height: 42%;
     height: -webkit-calc(100vh - 310px);
     height:         calc(100vh - 310px);
     width: 100%;
@@ -44,6 +51,9 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: 50% 100%;  
+    @include media-query($on-palm) {
+        background-attachment: scroll;
+    }
     background-attachment: fixed;
 }
 .page-aboutspanimage {
@@ -55,6 +65,9 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: 50% 100%;  
+    @include media-query($on-palm) {
+        background-attachment: scroll;
+    }
     background-attachment: fixed;
 }
 .page-imagesrc {

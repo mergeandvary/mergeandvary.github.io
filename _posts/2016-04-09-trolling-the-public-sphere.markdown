@@ -5,7 +5,7 @@ title: "Trolling the Public Sphere:<br>Populist Elites"
 description: "Internet anonymity provides democratic potential through allowing a greater sense of openness, equality, and freedom to express controversial view points. This allows for an ‘unprecedented’ wider public sphere participation from individuals who otherwise have ‘had little opportunity to participate in public debate’ (Rowland 2006: 519). Anonymity means that views can only be considered in terms of rational content: neither property nor privilege can be used to influence weight (Rowland 2006: 532). However, anonymity also allows for disassociation from individual identity and the creation or appropriation of other identities. It is frequently assumed that anonymity breeds incivility, damaging the Internet’s real potential for effective public sphere discourse. In the recent flurry of moral panic over Internet anonymity, trolling has become the mass media’s catch-all term for any unpleasant, hostile, or offensive comments made anonymously on the Internet. However, these attacks on trolling are perhaps misguided. This paper will delineate and examine some potential implications trolling has for effective public sphere discourse online."
 tags: essays trolling publicsphere
 author: Cooper Beilby
-image: Himno_Nacional_Argentino.jpg
+image: pariscafe.jpg
 imagesrc: Wikimedia
 ---
 
