@@ -6,7 +6,7 @@ description: "Zeldin (1994: 75-6) eloquently writes that people ‘have been abl
 tags: essays love intimacy publicsphere
 author: Cooper Beilby
 image: kissingcrowd.jpg
-imagesrc: Wikimedia (Marcel Oosterwijk - De Kus)
+imagesrc: Marcel Oosterwijk - De Kus
 ---
 
 Zeldin (1994: 75-6) eloquently writes that people ‘have been able to introduce new meaning into [love] again and again, as surprisingly as they have transformed grain into bread and dumplings and millefeuille cakes’. Lindholm (1998) suggests that the normative form love takes often differs depending on the way the social environment is organised. For many theorists (see Bauman 1999, 2001; Beck & Beck-Gernsheim 2002), modern risk society places an emphasis on private individuals shifting for themselves by carefully selecting from the choices provided by a free and open market premised on neoliberal principles of deregulation, liberalisation, and privatisation. Superficially, the concept of individualisation seems incompatible with the dyadic notions of intimacy. In this paper, I examine the connection between intimate sphere and public sphere in order to elucidate the role of such in constructing modern forms and ideals of love. In using the term “love”, I wish to differentiate it from the love that occurs within friendship and familial relationships, so as to focus specifically on that intimate and emotional bond between those who are commonly considered “lovers” or “in a relationship”. I argue that, despite our common perceptions of love being hermeneutically contained by a self-referential intimate sphere, its organisation cannot be divorced from the social environment it occurs.
