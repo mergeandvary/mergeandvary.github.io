@@ -54,7 +54,7 @@ pre > code { border: 0; padding-right: 0; padding-left: 0; }
 .icon > svg path { fill: #828282; }
 
 /** Site header */
-.site-spanimage { height: 42%; height: -webkit-calc(100% - 88px); height: calc(100% - 88px); width: 100%; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; background-repeat: no-repeat; background-position: 50% 75%; background-attachment: fixed; }
+.site-spanimage { height: 85%; height: -webkit-calc(100% - 88px); height: calc(100% - 88px); width: 100%; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; background-repeat: no-repeat; background-position: 50% 75%; background-attachment: fixed; }
 @media screen and (max-width: 600px) { .site-spanimage { background-attachment: scroll; } }
 .site-spanimage p { position: absolute; bottom: 70px; right: 10px; text-align: right; font-size: 18pt; font-weight: 800; color: #bbb; }
 @media screen and (max-width: 600px) { .site-spanimage p { visibility: hidden; } }
