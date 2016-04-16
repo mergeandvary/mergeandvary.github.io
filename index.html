@@ -10,10 +10,10 @@ layout: default
       <header class="post-header">
         <a href="{{ post.url | prepend: site.baseurl }}"><h1 class="post-title" itemprop="name headline">{{ post.title }}</h1></a>
         <p class="post-meta"><time datetime="{{ post.date | date_to_xmlschema }}" itemprop="datePublished">{{ post.date | date: "%b %-d, %Y" }}</time>{% if post.author %}&nbsp;&nbsp; • &nbsp;&nbsp;<span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ post.author }}</span></span>{% endif %}</p></header>
-        <div class="post-content" itemprop="articleBody">
-            {{ post.description }}
+        <div class="post-description" itemprop="articleBody">
+            <a href="{{ post.url | prepend: site.baseurl }}">{{ post.content }}</a>
         </div>
-        <a href="{{ post.url | prepend: site.baseurl }}">Read more...</a>
+        <a href="{{ post.url | prepend: site.baseurl }}">Read more...</a><br><br>
       </li>
     {% endfor %}
   </ul>

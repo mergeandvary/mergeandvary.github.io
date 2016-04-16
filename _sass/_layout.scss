@@ -215,3 +215,22 @@
         }
     }
 }
+.post-description {
+    height: 72pt;
+    overflow: hidden;
+    a {
+        &,
+        &:link {
+            color: $text-color;
+        }
+        &,
+        &:visited {
+            color: $text-color;
+        }
+        &,
+        &:hover {
+            color: $text-color;
+            text-decoration: none;
+        }
+    }
+}
