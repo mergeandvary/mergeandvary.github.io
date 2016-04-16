@@ -20,4 +20,4 @@ FOSS is frequently criticised as having a free rider problem: why submit patches
 Here I have outlined just a few of the many benefits that FOSS provides to academic researchers. However, despite the significant benefits, this is not to suggest FOSS is some utopian catchall solution. As with all tools, it is important to justify selection against the available alternatives so as to make the best choice for the problem at hand.
 
 ## Reference
-Raymond, E.S. 2000, *The Cathedral and the Bazaar*, http://www.catb.org/esr/writings/cathedral-bazaar/
+Raymond, E.S. 2000, *The Cathedral and the Bazaar*, [http://www.catb.org/esr/writings/cathedral-bazaar/](http://www.catb.org/esr/writings/cathedral-bazaar/)
