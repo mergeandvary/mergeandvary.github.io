@@ -145,7 +145,7 @@
  */
 .social-share {
     text-align: center;
-    letter-spacing: 10px;
+    background-color: $background-color;
 }
 .social-sharetext {
     font-size: 7pt;
@@ -160,7 +160,7 @@
     text-align: center;
     line-height: 1;
     color: $text-color-light;
-    letter-spacing: 24px;
+    padding: 10px;
     &,
     &:link {
         color: $text-color-light;

@@ -86,11 +86,11 @@ pre > code { border: 0; padding-right: 0; padding-left: 0; }
 .post-link, .post-link:visited { color: #777; }
 
 /** Share Buttons */
-.social-share { text-align: center; letter-spacing: 10px; }
+.social-share { text-align: center; background-color: #fdfdfd; }
 
 .social-sharetext { font-size: 7pt; font-weight: 400; color: #bbb; text-align: center; line-height: 2; letter-spacing: 1px; }
 
-.social-shareicon { font-size: 36px; text-align: center; line-height: 1; color: #bbb; letter-spacing: 24px; }
+.social-shareicon { font-size: 36px; text-align: center; line-height: 1; color: #bbb; padding: 10px; }
 .social-shareicon, .social-shareicon:link { color: #bbb; }
 .social-shareicon, .social-shareicon:visited { color: #bbb; }
 .social-shareicon, .social-shareicon:hover { color: #333; }
