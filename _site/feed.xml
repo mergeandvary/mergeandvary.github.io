@@ -6,8 +6,8 @@
 </description>
     <link>mergeandvary.github.io/</link>
     <atom:link href="mergeandvary.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 06 May 2016 15:05:55 +1000</pubDate>
-    <lastBuildDate>Fri, 06 May 2016 15:05:55 +1000</lastBuildDate>
+    <pubDate>Fri, 06 May 2016 15:15:57 +1000</pubDate>
+    <lastBuildDate>Fri, 06 May 2016 15:15:57 +1000</lastBuildDate>
     <generator>Jekyll v3.0.3</generator>
     
       <item>
@@ -30,7 +30,7 @@
 
 &lt;p&gt;About PRAW: &lt;a href=&quot;http://praw.readthedocs.io/en/stable/&quot;&gt;http://praw.readthedocs.io/en/stable/&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;It doesn’t seem to difficult. I think getting my hands dirty combined with my &lt;em&gt;very&lt;/em&gt; limited knowledge of python I might actually be able to get somewhere with the Reddit API and PRAW.&lt;/p&gt;
+&lt;p&gt;It doesn’t seem too difficult. I think getting my hands dirty combined with my &lt;em&gt;very&lt;/em&gt; limited knowledge of python I might actually be able to get somewhere with the Reddit API and PRAW.&lt;/p&gt;
 
 &lt;p&gt;This was my first test run - getting the top 5 hot threads on the opensource subreddit.&lt;/p&gt;
 

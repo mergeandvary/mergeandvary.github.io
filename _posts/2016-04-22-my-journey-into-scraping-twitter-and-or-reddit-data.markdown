@@ -25,7 +25,7 @@ When I started looking into scraping Reddit data, I saw in [this post](https://w
 
 About PRAW: [http://praw.readthedocs.io/en/stable/](http://praw.readthedocs.io/en/stable/)
 
-It doesn't seem to difficult. I think getting my hands dirty combined with my *very* limited knowledge of python I might actually be able to get somewhere with the Reddit API and PRAW.
+It doesn't seem too difficult. I think getting my hands dirty combined with my *very* limited knowledge of python I might actually be able to get somewhere with the Reddit API and PRAW.
 
 This was my first test run - getting the top 5 hot threads on the opensource subreddit.
 
