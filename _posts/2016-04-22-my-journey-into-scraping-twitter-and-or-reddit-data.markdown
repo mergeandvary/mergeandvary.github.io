@@ -121,7 +121,7 @@ Score:     7 (Ups: 7 / Downs: 0)
 Comment:   You can't put something in perspective for someone who lacks perspective altogether
 {% endhighlight %}
 
-Next week I will be looking at ways that I can insert this info into a database. Feeling on track!
+Next week I will be looking at ways that I can insert this info into a database. Feeling on track! Hitting those deliverables!
 
 ## A Collection of Links
 
