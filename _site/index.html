@@ -54,19 +54,15 @@
         <div class="post-description" itemprop="articleBody">
             <a href="/2016/04/22/my-journey-into-scraping-twitter-and-or-reddit-data.html"><p>As part of my digital humanities project, I am considering collecting and analysing tweets and/or reddit discussions on the #INeedMasculism #INeedMasculinism #INeedMasculismBecause hashtag(s). I am hoping to get some proof of concept so that I can employ this method or something similar in my research for my MRES next year. As this is a pretty new idea for me, I’m going to be documenting my journey here as a sort of resource journal.</p>
 
-<p>At first I had been struggling to find some information on how I would go about collecting data. I found some information about topsy.com, a service run by Apple that collected tweets and allowed end users to search that data in a variety of ways. Unfortunately, the service has now been shutdown.</p>
-
 <h2 id="what-data-to-collect">What Data to Collect</h2>
+<p>Data I am likely to want in addition to the actual tweet content is username, time/date, retweets and mentions. I will probably also want to collect some data about each user - profile picture, age, gender and other details available on profiles. I am likely to want similar data for Reddit. Additionally, for Reddit I will also want to collect score, up/down votes and subreddit.</p>
 
-<p>Data I am likely to want in addition to the actual tweet content is username, time/date, retweets and pings (I’m not sure what twitter calls it when you tag someone?). I will probably also want to collect some data about each user - profile picture, age, gender and other details available on profiles. I am likely to want similar data for Reddit. A quick search of reddit turns up very little for both #INeedMasculinism and #INeedMasculism. However, there are quite a few threads/posts discussing #INeedMasculismBecause</p>
+<p>This data will then go into a spreadsheet - ideally a multidimensional db, but that might have to wait for another time. In the spreadsheet I will have a page of each submission thread and then an individual page for each submission id that aggregates all the comments. I’m going to have to think of some way to filter out quoted comments to avoid double up. I will also need a way to track which comment each user is replying to - although, this might be problematic in itself as users might be replying to multiple comments. Nonetheless, it seems on Reddit that most users are fairly consistent in posting methods.</p>
 
-<h2 id="starting-out-with-twitter">Starting Out With Twitter</h2>
+<p>A quick search of reddit turns up very little for both #INeedMasculinism and #INeedMasculism. However, there are quite a few threads/posts discussing #INeedMasculismBecause. INeedMasculism will be a good tag to do testing with due to the limited results.</p>
 
-<p>According to the article on <a href="http://knightlab.northwestern.edu/2014/03/15/a-beginners-guide-to-collecting-twitter-data-and-a-bit-of-web-scraping/">Knightlab</a>, the twitter API imposes some limits on how many calls can be made within a certain window. The Knightlab article suggests a few good tips about setting up a cron job to fetch data every 15mins and ensuring a key cycle between keys to stay within limits. I might need to set up a NeCTAR virtual machine with a cron job to do this for me and not have to keep a local machine running. From this <a href="http://stackoverflow.com/questions/2714471/twitter-api-display-all-tweets-with-a-certain-hashtag">StackOverflow</a> forum thread, it seems like the twitter API might not be too difficult to use as it appears to just involve JSON-RPC requests. It might actually be fairly easy to just write a quick python script to collect the data and place it into a database. This would certainly simplify running on a virtual NeCTAR machine. However, if something already exists I would rather use that.</p>
-
-<h2 id="scraping-reddit-data">Scraping Reddit Data</h2>
-
-<p>When I started looking into scraping Reddit data, I saw in <a href="https://www.reddit.com/r/TheoryOfReddit/comments/2hg53b/q_how_can_i_collect_raw_data_from_reddit/">this post</a> a suggestion that the simplest way is to use PRAW. PRAW is a python module that interfaces with the <a href="https://www.reddit.com/dev/api">Reddit API</a>.</p>
+<h2 id="reddit-scraping">Reddit Scraping</h2>
+<p>When I started looking into scraping Reddit data, I saw in <a href="https://www.reddit.com/r/TheoryOfReddit/comments/2hg53b/q_how_can_i_collect_raw_data_from_reddit/">this post</a> a suggestion that the simplest way is to use PRAW. PRAW is a python module that interfaces with the <a href="https://www.reddit.com/dev/api">Reddit API</a>. The great thing about PRAW is that it is designed to stay within the guidelines of the Reddit API, so all I need to do is supply a useragent string in line with the guidelines and after that I don’t have to worry about any issues with authentication or getting booted from the API for abuse.</p>
 
 <p>About PRAW: <a href="http://praw.readthedocs.io/en/stable/">http://praw.readthedocs.io/en/stable/</a></p>
 
@@ -161,6 +157,102 @@ Score:     7 (Ups: 7 / Downs: 0)
 Comment:   You can't put something in perspective for someone who lacks perspective altogether</code></pre></figure>
 
 <p>Next week I will be looking at ways that I can insert this info into a database. Feeling on track! Hitting those deliverables!</p>
+
+<h2 id="putting-it-in-a-database-ie-excel-rolleyes">Putting it in a Database (i.e. Excel &lt;<em>rolleyes</em>&gt;)</h2>
+<p>The simpliest method I found for creating a spreadsheet for the data was to use the xlwt python module</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">sudo pip install xlwt</code></pre></figure>
+
+<p>Using Excel spreadsheets is probably not the best method, but it is certainly the simplest for now. I’m not doing anything advanced (formulas formating links) - I just need something that I can dump the data into and a CSV file won’t suffice as many of the comments will likely contain various characters such as commas and I’m not really interested in going to the effort of stripping them out, plus I’m not exactly sure of the methods I will be using to analyze the data yet, so just want to make sure I’m collecting the data in the rawest form possible. I can just use libre office to convert to a different format if necessary.</p>
+
+<p>I used the basic examples here: <a href="http://www.saltycrane.com/blog/2010/02/using-python-write-excel-openoffice-calc-spreadsheet-ubuntu-linux/">http://www.saltycrane.com/blog/2010/02/using-python-write-excel-openoffice-calc-spreadsheet-ubuntu-linux/</a></p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">xlwt</span>
+
+<span class="n">DATA</span> <span class="o">=</span> <span class="p">((</span><span class="s">"The Essential Calvin and Hobbes"</span><span class="p">,</span> <span class="mi">1988</span><span class="p">,),</span>
+        <span class="p">(</span><span class="s">"The Authoritative Calvin and Hobbes"</span><span class="p">,</span> <span class="mi">1990</span><span class="p">,),</span>
+        <span class="p">(</span><span class="s">"The Indispensable Calvin and Hobbes"</span><span class="p">,</span> <span class="mi">1992</span><span class="p">,),</span>
+        <span class="p">(</span><span class="s">"Attack of the Deranged Mutant Killer Monster Snow Goons"</span><span class="p">,</span> <span class="mi">1992</span><span class="p">,),</span>
+        <span class="p">(</span><span class="s">"The Days Are Just Packed"</span><span class="p">,</span> <span class="mi">1993</span><span class="p">,),</span>
+        <span class="p">(</span><span class="s">"Homicidal Psycho Jungle Cat"</span><span class="p">,</span> <span class="mi">1994</span><span class="p">,),</span>
+        <span class="p">(</span><span class="s">"There's Treasure Everywhere"</span><span class="p">,</span> <span class="mi">1996</span><span class="p">,),</span>
+        <span class="p">(</span><span class="s">"It's a Magical World"</span><span class="p">,</span> <span class="mi">1996</span><span class="p">,),)</span>
+
+<span class="n">wb</span> <span class="o">=</span> <span class="n">xlwt</span><span class="o">.</span><span class="n">Workbook</span><span class="p">()</span>
+<span class="n">ws</span> <span class="o">=</span> <span class="n">wb</span><span class="o">.</span><span class="n">add_sheet</span><span class="p">(</span><span class="s">"My Sheet"</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">DATA</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">col</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
+        <span class="n">ws</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">col</span><span class="p">)</span>
+<span class="n">ws</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="mi">256</span> <span class="o">*</span> <span class="nb">max</span><span class="p">([</span><span class="nb">len</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">DATA</span><span class="p">])</span>
+<span class="n">wb</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s">"myworkbook.xls"</span><span class="p">)</span></code></pre></figure>
+
+<p>Fairly straightforward: each row of data goes in a tuple in the order of the columns, then each row tuple goes inside a larger tuple. Then you just iterate over the tuple with a for loop and write the data with ws.write into the coordinates. Enumerate just lets you have an additional variable that holds the position within the for loop as an integer - i is holding the y coordinate (rows) and j is the x coordinate (columns).</p>
+
+<p>The ws.col(0).width is an attempt to autosize the width of columns, but I’m not really interested in doing that so I scrapped it as it was causing problems when there were empty datasets.</p>
+
+<p>So what I did was just use for loops and add the submissions to a tuple.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">for</span> <span class="n">searchterm</span> <span class="ow">in</span> <span class="n">SEARCH_TERMS</span><span class="p">:</span>
+    <span class="k">print</span> <span class="s">'Searching for term: '</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">searchterm</span><span class="p">)</span>
+    <span class="n">submissions</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">searchterm</span><span class="p">,</span> <span class="n">subreddit</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">syntax</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">period</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">submission</span> <span class="ow">in</span> <span class="n">submissions</span><span class="p">:</span>
+        <span class="c"># Make sure the submission isn't a bot copying another submission</span>
+        <span class="n">title</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">submission</span><span class="o">.</span><span class="n">title</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">title</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">'[COPY]'</span><span class="p">):</span>
+            <span class="k">print</span> <span class="s">'Submission COPY - Skipping...'</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">submission_db</span> <span class="o">=</span> <span class="p">()</span>
+
+            <span class="c"># Make a separate db page for submission details only</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">submission_db</span> <span class="o">=</span> <span class="n">submission_db</span> <span class="o">+</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">submission</span><span class="o">.</span><span class="nb">id</span><span class="p">),)</span>
+                <span class="n">submission_db</span> <span class="o">=</span> <span class="n">submission_db</span> <span class="o">+</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">submission</span><span class="o">.</span><span class="n">title</span><span class="p">),)</span>
+                <span class="n">submission_db</span> <span class="o">=</span> <span class="n">submission_db</span> <span class="o">+</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">submission</span><span class="o">.</span><span class="n">author</span><span class="p">),)</span>
+                <span class="n">submission_db</span> <span class="o">=</span> <span class="n">submission_db</span> <span class="o">+</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">submission</span><span class="o">.</span><span class="n">url</span><span class="p">),)</span>
+                <span class="n">submission_db</span> <span class="o">=</span> <span class="n">submission_db</span> <span class="o">+</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">fromtimestamp</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">submission</span><span class="o">.</span><span class="n">created_utc</span><span class="p">))</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s">'</span><span class="si">%</span><span class="s">Y-</span><span class="si">%</span><span class="s">m-</span><span class="si">%</span><span class="s">d </span><span class="si">%</span><span class="s">H:</span><span class="si">%</span><span class="s">M:</span><span class="si">%</span><span class="s">S'</span><span class="p">)),)</span>
+                <span class="n">submission_db</span> <span class="o">=</span> <span class="n">submission_db</span> <span class="o">+</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">submission</span><span class="o">.</span><span class="n">subreddit</span><span class="p">),)</span>
+                <span class="n">submission_db</span> <span class="o">=</span> <span class="n">submission_db</span> <span class="o">+</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">submission</span><span class="o">.</span><span class="n">subreddit_id</span><span class="p">),)</span>
+                <span class="n">submission_db</span> <span class="o">=</span> <span class="n">submission_db</span> <span class="o">+</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">submission</span><span class="o">.</span><span class="n">score</span><span class="p">),)</span>
+                <span class="n">submission_db</span> <span class="o">=</span> <span class="n">submission_db</span> <span class="o">+</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">submission</span><span class="o">.</span><span class="n">selftext</span><span class="p">),)</span>
+                <span class="n">submissions_db</span> <span class="o">=</span> <span class="n">submissions_db</span> <span class="o">+</span> <span class="p">(</span><span class="n">submission_db</span><span class="p">,)</span>
+                <span class="k">print</span> <span class="s">'Added Submission ID: '</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">submission</span><span class="o">.</span><span class="nb">id</span><span class="p">)</span>
+            <span class="k">except</span><span class="p">:</span>
+                <span class="k">print</span> <span class="s">'ERROR: Adding info to submission_db'</span>
+
+<span class="k">if</span> <span class="s">'submissions'</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="k">print</span> <span class="s">'WRITING SUBMISSIONS'</span>
+    <span class="n">submissions_ws</span> <span class="o">=</span> <span class="n">wb</span><span class="o">.</span><span class="n">add_sheet</span><span class="p">(</span><span class="s">"Submissions"</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">submissions_db</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">col</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
+            <span class="n">submissions_ws</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">col</span><span class="p">)</span>
+
+<span class="n">wb</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s">"myworkbook.xls"</span><span class="p">)</span></code></pre></figure>
+
+<p>I added some categories at the top of the spreadsheet in the first row before I run the search for submissions.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">SUBMISSIONS_DB_CAT</span>      <span class="o">=</span> <span class="p">(</span><span class="s">'ID'</span><span class="p">,</span> <span class="s">'TITLE'</span><span class="p">,</span> <span class="s">'AUTHOR'</span><span class="p">,</span> <span class="s">'URL'</span><span class="p">,</span> <span class="s">'TIMESTAMP'</span><span class="p">,</span> <span class="s">'SUBREDDIT'</span><span class="p">,</span> <span class="s">'SUBREDDIT ID'</span><span class="p">,</span> <span class="s">'SCORE'</span><span class="p">,</span> <span class="s">'COMMENT'</span><span class="p">)</span>
+<span class="n">submissions_db</span> <span class="o">=</span> <span class="p">()</span>
+<span class="n">submissions_db</span> <span class="o">=</span> <span class="n">submissions_db</span> <span class="o">+</span> <span class="p">(</span><span class="n">SUBMISSIONS_DB_CAT</span><span class="p">,)</span></code></pre></figure>
+
+<h2 id="debugging">Debugging</h2>
+<p>Initially everything was working fine. I had expanded my code out to also collect comments for each submission and place them in individual pages of the spreadsheet according to submission ID. The code also aggregated all the comments for all submissions into a separate page. I also noticed that the submission also acted as the first comment, so I needed to add those details in the first row of each comments page. Now that everything seemed to be working fine, I decided to expand my code out to be able to collect multiple search terms. This was when I started running into ASCII UnicodeErrors. Googling the issue I found I needed to set encoding/decoding to utf-8. However, all the solutions I found I would need to do this for every individual string and I really couldn’t be bothered. There must be a quicker way! After some lengthy googling I stumbled upon this solution in a stackoverflow comment thread:</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">sys</span>
+<span class="nb">reload</span><span class="p">(</span><span class="n">sys</span><span class="p">)</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">setdefaultencoding</span><span class="p">(</span><span class="s">'utf-8'</span><span class="p">)</span>
+
+<span class="n">wb</span> <span class="o">=</span> <span class="n">xlwt</span><span class="o">.</span><span class="n">Workbook</span><span class="p">(</span><span class="n">encoding</span><span class="o">=</span><span class="s">'utf-8'</span><span class="p">)</span></code></pre></figure>
+
+<p>It worked, but xlwt started throwing out errors. I found I also needed to set the encoding for the Workbook and all was well again!</p>
+
+<p>After scraping some data, I noticed a few duplicate submissions in the POLITICS subreddit. It seems that a few bots were making copies of threads and dumping them into the subreddit. Copy threads are marked with [COPY] in the title, so I wrote a simple if statement routine to check submissions for this string in the title and skip them.</p>
+
+<p>As I was going through the data, I started noticing something strange: all the up vote scores were equal to the total score. Moreover, many of the up votes were negative which simply cannot be possible. I then noticed the downvotes were all zero. After some searching in the Redditdev subreddit, I discovered that Reddit had recently made a (contentious) decision to remove all access to up/down vote scores and also upvote ratio data. This had been introduced to stop bots from attempting to artificially inflate/deflate some scores. Without access to this through the API, bots are unable to check whether or not they are having an effect on scores. Disappointing for me as a zero score with 100 votes is very different to a zero score with no votes in terms of impact on other users. Still, if the scores are being altered by bots, then they aren’t really going to be a very good heuristic anyway!</p>
+
+<h2 id="twitter-scraping">Twitter Scraping</h2>
+<p>At first I had been struggling to find some information on how I would go about collecting data. I found some information about topsy.com, a service run by Apple that collected tweets and allowed end users to search that data in a variety of ways. Unfortunately, the service has now been shutdown. Nonetheless, pressing on further I was able to find some information. I’ve been collecting the links I’ve found in the section at the bottom of this post.</p>
+
+<p>According to the article on <a href="http://knightlab.northwestern.edu/2014/03/15/a-beginners-guide-to-collecting-twitter-data-and-a-bit-of-web-scraping/">Knightlab</a>, the twitter API imposes some limits on how many calls can be made within a certain window. The Knightlab article suggests a few good tips about setting up a cron job to fetch data every 15mins and ensuring a key cycle between keys to stay within limits. I might need to set up a NeCTAR virtual machine with a cron job to do this for me and not have to keep a local machine running. From this <a href="http://stackoverflow.com/questions/2714471/twitter-api-display-all-tweets-with-a-certain-hashtag">StackOverflow</a> forum thread, it seems like the twitter API might not be too difficult to use as it appears to just involve JSON-RPC requests. It might actually be fairly easy to just write a quick python script to collect the data and place it into a database. This would certainly simplify running on a virtual NeCTAR machine. However, if something already exists I would rather use that.</p>
 
 <h2 id="a-collection-of-links">A Collection of Links</h2>
 
