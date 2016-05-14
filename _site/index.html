@@ -249,6 +249,80 @@ Comment:   You can't put something in perspective for someone who lacks perspect
 
 <p>As I was going through the data, I started noticing something strange: all the up vote scores were equal to the total score. Moreover, many of the up votes were negative which simply cannot be possible. I then noticed the downvotes were all zero. After some searching in the Redditdev subreddit, I discovered that Reddit had recently made a (contentious) decision to remove all access to up/down vote scores and also upvote ratio data. This had been introduced to stop bots from attempting to artificially inflate/deflate some scores. Without access to this through the API, bots are unable to check whether or not they are having an effect on scores. Disappointing for me as a zero score with 100 votes is very different to a zero score with no votes in terms of impact on other users. Still, if the scores are being altered by bots, then they aren’t really going to be a very good heuristic anyway!</p>
 
+<p>Another thing I noticed from putting the data into a spreadsheet was that when I compared back to the original threads I noticed that I seemed to be missing a number of comments. I confirmed this by adding a comment counter and comparing the number of comments between threads and what I was collecting. I then realised I was only getting the first level of comments, not the comments that replied to other comments. Each comment object also has a replies object! I solved this by writing a function to grab the comments data and then check for a replies object and recursively run that function on the replies object - so essentially the script would walk down the comments tree. The other option was to use a flatten comments option in PRAW. However, I wanted to make sure I retained the order of comments. The other issue I came up against was that some comment replies are hidden behind a “More Comments” object. Currently I’m just checking for this and skipping them as I haven’t come up against many, but this will ultimately need a solution. From what I’ve read, there are some limitations on how walking down the more comments objects - we will see!</p>
+
+<h2 id="postgresql">PostGreSQL</h2>
+<p>Now I’m on to adding to a real database rather than a spreadsheet. I rewrote my code a little bit to use dictionaries rather than tuples</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">addCommentRegression</span><span class="p">(</span><span class="n">submission</span><span class="p">,</span><span class="n">comment</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">submission_db_dict</span>
+    <span class="k">global</span> <span class="n">comment_db_dict</span>
+    <span class="c"># Make sure it is a comment rather than morecomments object</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">comment</span><span class="p">,</span> <span class="n">praw</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">Comment</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">comment_dict</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="n">comment_dict</span><span class="p">[</span><span class="s">'SubmissionID'</span><span class="p">]</span>    <span class="o">=</span> <span class="n">submission</span><span class="o">.</span><span class="nb">id</span>
+            <span class="n">comment_dict</span><span class="p">[</span><span class="s">'ParentID'</span><span class="p">]</span>        <span class="o">=</span> <span class="n">comment</span><span class="o">.</span><span class="n">parent_id</span>
+            <span class="n">comment_dict</span><span class="p">[</span><span class="s">'Author'</span><span class="p">]</span>          <span class="o">=</span> <span class="n">comment</span><span class="o">.</span><span class="n">author</span>
+            <span class="n">comment_dict</span><span class="p">[</span><span class="s">'Created'</span><span class="p">]</span>         <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">fromtimestamp</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">comment</span><span class="o">.</span><span class="n">created_utc</span><span class="p">))</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s">'</span><span class="si">%</span><span class="s">Y-</span><span class="si">%</span><span class="s">m-</span><span class="si">%</span><span class="s">d </span><span class="si">%</span><span class="s">H:</span><span class="si">%</span><span class="s">M:</span><span class="si">%</span><span class="s">S'</span><span class="p">)</span>
+            <span class="n">comment_dict</span><span class="p">[</span><span class="s">'Score'</span><span class="p">]</span>           <span class="o">=</span> <span class="n">comment</span><span class="o">.</span><span class="n">score</span>
+            <span class="n">comment_dict</span><span class="p">[</span><span class="s">'Removal_Reason'</span><span class="p">]</span>  <span class="o">=</span> <span class="n">comment</span><span class="o">.</span><span class="n">removal_reason</span>
+            <span class="n">comment_dict</span><span class="p">[</span><span class="s">'Report_Reasons'</span><span class="p">]</span>  <span class="o">=</span> <span class="n">comment</span><span class="o">.</span><span class="n">report_reasons</span>
+            <span class="n">comment_dict</span><span class="p">[</span><span class="s">'Edited'</span><span class="p">]</span>          <span class="o">=</span> <span class="n">comment</span><span class="o">.</span><span class="n">edited</span>
+            <span class="n">comment_dict</span><span class="p">[</span><span class="s">'Controversial'</span><span class="p">]</span>   <span class="o">=</span> <span class="n">comment</span><span class="o">.</span><span class="n">controversiality</span>
+            <span class="n">comment_dict</span><span class="p">[</span><span class="s">'Body'</span><span class="p">]</span>            <span class="o">=</span> <span class="n">comment</span><span class="o">.</span><span class="n">body</span>
+
+            <span class="n">addAuthor</span><span class="p">(</span><span class="n">comment</span><span class="o">.</span><span class="n">author</span><span class="p">)</span>
+            <span class="n">comment_db_dict</span><span class="p">[</span><span class="n">comment</span><span class="o">.</span><span class="nb">id</span><span class="p">]</span> <span class="o">=</span> <span class="n">comment_dict</span>
+            <span class="k">print</span> <span class="s">'Added comment ID: '</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">comment</span><span class="o">.</span><span class="nb">id</span><span class="p">)</span>
+        <span class="k">except</span> <span class="nb">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span> <span class="k">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+
+        <span class="c"># Regression for comments</span>
+        <span class="k">if</span> <span class="n">comment</span><span class="o">.</span><span class="n">replies</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">reply</span> <span class="ow">in</span> <span class="n">comment</span><span class="o">.</span><span class="n">replies</span><span class="p">:</span>
+                <span class="n">addCommentRegression</span><span class="p">(</span><span class="n">submission</span><span class="p">,</span><span class="n">reply</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">print</span> <span class="s">'More Comments OBJECT'</span></code></pre></figure>
+
+<p>I’m using the tutorial here: <a href="http://zetcode.com/db/postgresqlpythontutorial/">http://zetcode.com/db/postgresqlpythontutorial/</a></p>
+
+<p>Essentially I am collecting a submissions table, a comments table and an authors table. I will also need to add a subreddit table, after I look into collecting data on subreddits</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">con</span> <span class="o">=</span> <span class="bp">None</span>
+<span class="k">try</span><span class="p">:</span>   
+    <span class="n">con</span> <span class="o">=</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">database</span><span class="o">=</span><span class="n">POSTGRES_DB</span><span class="p">,</span> <span class="n">user</span><span class="o">=</span><span class="n">POSTGRES_USER</span><span class="p">)</span> 
+    <span class="n">cur</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+
+    <span class="c"># ADD SUBMISSIONS   </span>
+    <span class="n">table</span> <span class="o">=</span> <span class="p">()</span>
+    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">submission_db_dict</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+        <span class="n">entry</span> <span class="o">=</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">key</span><span class="p">),</span> 
+                 <span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="p">[</span><span class="s">'Author'</span><span class="p">]),</span> 
+                 <span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="p">[</span><span class="s">'Created'</span><span class="p">]),</span> 
+                 <span class="nb">int</span><span class="p">(</span><span class="n">value</span><span class="p">[</span><span class="s">'Score'</span><span class="p">]),</span> 
+                 <span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="p">[</span><span class="s">'Selftext'</span><span class="p">]),</span> 
+                 <span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="p">[</span><span class="s">'SubredditID'</span><span class="p">]),</span> 
+                 <span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="p">[</span><span class="s">'Title'</span><span class="p">])</span>
+                 <span class="p">)</span>
+        <span class="n">table</span> <span class="o">=</span> <span class="n">table</span> <span class="o">+</span> <span class="p">(</span><span class="n">entry</span><span class="p">,)</span>
+    <span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s">"DROP TABLE IF EXISTS Submissions"</span><span class="p">)</span>
+    <span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s">"CREATE TABLE Submissions(SubmissionID TEXT PRIMARY KEY, Author TEXT, Created TEXT, Score INT, Selftext TEXT, SubredditID TEXT, Title TEXT)"</span><span class="p">)</span>
+    <span class="n">query</span> <span class="o">=</span> <span class="s">"INSERT INTO Submissions (SubmissionID, Author, Created, Score, Selftext, SubredditID, Title) VALUES (</span><span class="si">%</span><span class="s">s, </span><span class="si">%</span><span class="s">s, </span><span class="si">%</span><span class="s">s, </span><span class="si">%</span><span class="s">s, </span><span class="si">%</span><span class="s">s, </span><span class="si">%</span><span class="s">s, </span><span class="si">%</span><span class="s">s)"</span>
+    <span class="n">cur</span><span class="o">.</span><span class="n">executemany</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">table</span><span class="p">)</span>
+    <span class="n">con</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+
+<span class="k">except</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">DatabaseError</span><span class="p">,</span> <span class="n">e</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">con</span><span class="p">:</span>
+        <span class="n">con</span><span class="o">.</span><span class="n">rollback</span><span class="p">()</span>
+    <span class="k">print</span> <span class="s">'Error </span><span class="si">%</span><span class="s">s'</span> <span class="o">%</span> <span class="n">e</span>    
+    <span class="n">sys</span><span class="o">.</span><span class="nb">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    
+<span class="k">finally</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">con</span><span class="p">:</span>
+        <span class="n">con</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></code></pre></figure>
+
+<p>It seems to be all working correctly as far as I can tell.</p>
+
 <h2 id="twitter-scraping">Twitter Scraping</h2>
 <p>At first I had been struggling to find some information on how I would go about collecting data. I found some information about topsy.com, a service run by Apple that collected tweets and allowed end users to search that data in a variety of ways. Unfortunately, the service has now been shutdown. Nonetheless, pressing on further I was able to find some information. I’ve been collecting the links I’ve found in the section at the bottom of this post.</p>
 

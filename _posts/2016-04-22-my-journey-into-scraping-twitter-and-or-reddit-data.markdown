@@ -222,6 +222,84 @@ After scraping some data, I noticed a few duplicate submissions in the POLITICS 
 
 As I was going through the data, I started noticing something strange: all the up vote scores were equal to the total score. Moreover, many of the up votes were negative which simply cannot be possible. I then noticed the downvotes were all zero. After some searching in the Redditdev subreddit, I discovered that Reddit had recently made a (contentious) decision to remove all access to up/down vote scores and also upvote ratio data. This had been introduced to stop bots from attempting to artificially inflate/deflate some scores. Without access to this through the API, bots are unable to check whether or not they are having an effect on scores. Disappointing for me as a zero score with 100 votes is very different to a zero score with no votes in terms of impact on other users. Still, if the scores are being altered by bots, then they aren't really going to be a very good heuristic anyway!
 
+Another thing I noticed from putting the data into a spreadsheet was that when I compared back to the original threads I noticed that I seemed to be missing a number of comments. I confirmed this by adding a comment counter and comparing the number of comments between threads and what I was collecting. I then realised I was only getting the first level of comments, not the comments that replied to other comments. Each comment object also has a replies object! I solved this by writing a function to grab the comments data and then check for a replies object and recursively run that function on the replies object - so essentially the script would walk down the comments tree. The other option was to use a flatten comments option in PRAW. However, I wanted to make sure I retained the order of comments. The other issue I came up against was that some comment replies are hidden behind a "More Comments" object. Currently I'm just checking for this and skipping them as I haven't come up against many, but this will ultimately need a solution. From what I've read, there are some limitations on how walking down the more comments objects - we will see!
+
+## PostGreSQL
+Now I'm on to adding to a real database rather than a spreadsheet. I rewrote my code a little bit to use dictionaries rather than tuples
+
+{% highlight python %}
+def addCommentRegression(submission,comment):
+    global submission_db_dict
+    global comment_db_dict
+    # Make sure it is a comment rather than morecomments object
+    if isinstance(comment, praw.objects.Comment):
+        try:
+            comment_dict = {}
+            comment_dict['SubmissionID']    = submission.id
+            comment_dict['ParentID']        = comment.parent_id
+            comment_dict['Author']          = comment.author
+            comment_dict['Created']         = datetime.datetime.fromtimestamp(int(comment.created_utc)).strftime('%Y-%m-%d %H:%M:%S')
+            comment_dict['Score']           = comment.score
+            comment_dict['Removal_Reason']  = comment.removal_reason
+            comment_dict['Report_Reasons']  = comment.report_reasons
+            comment_dict['Edited']          = comment.edited
+            comment_dict['Controversial']   = comment.controversiality
+            comment_dict['Body']            = comment.body
+
+            addAuthor(comment.author)
+            comment_db_dict[comment.id] = comment_dict
+            print 'Added comment ID: ' + str(comment.id)
+        except Exception as e: print(e)
+
+        # Regression for comments
+        if comment.replies:
+            for reply in comment.replies:
+                addCommentRegression(submission,reply)
+    else:
+        print 'More Comments OBJECT'
+{% endhighlight %}
+
+I'm using the tutorial here: [http://zetcode.com/db/postgresqlpythontutorial/](http://zetcode.com/db/postgresqlpythontutorial/)
+
+Essentially I am collecting a submissions table, a comments table and an authors table. I will also need to add a subreddit table, after I look into collecting data on subreddits
+
+{% highlight python %}
+con = None
+try:   
+    con = psycopg2.connect(database=POSTGRES_DB, user=POSTGRES_USER) 
+    cur = con.cursor()
+
+    # ADD SUBMISSIONS   
+    table = ()
+    for key, value in submission_db_dict.iteritems():
+        entry = (str(key), 
+                 str(value['Author']), 
+                 str(value['Created']), 
+                 int(value['Score']), 
+                 str(value['Selftext']), 
+                 str(value['SubredditID']), 
+                 str(value['Title'])
+                 )
+        table = table + (entry,)
+    cur.execute("DROP TABLE IF EXISTS Submissions")
+    cur.execute("CREATE TABLE Submissions(SubmissionID TEXT PRIMARY KEY, Author TEXT, Created TEXT, Score INT, Selftext TEXT, SubredditID TEXT, Title TEXT)")
+    query = "INSERT INTO Submissions (SubmissionID, Author, Created, Score, Selftext, SubredditID, Title) VALUES (%s, %s, %s, %s, %s, %s, %s)"
+    cur.executemany(query, table)
+    con.commit()
+
+except psycopg2.DatabaseError, e:
+    if con:
+        con.rollback()
+    print 'Error %s' % e    
+    sys.exit(1)
+    
+finally:
+    if con:
+        con.close()
+{% endhighlight %}
+
+It seems to be all working correctly as far as I can tell.
+
 ## Twitter Scraping
 At first I had been struggling to find some information on how I would go about collecting data. I found some information about topsy.com, a service run by Apple that collected tweets and allowed end users to search that data in a variety of ways. Unfortunately, the service has now been shutdown. Nonetheless, pressing on further I was able to find some information. I've been collecting the links I've found in the section at the bottom of this post.
 
