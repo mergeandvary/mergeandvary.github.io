@@ -303,7 +303,49 @@ It seems to be all working correctly as far as I can tell.
 ## Debugging Foriegn Keys and Author 404s
 I encountered a database error when referencing parent_ids back to the comments table. I quickly realised that some parent_ids referenced the submissions rather than comments. Basically they were split over two tables. The way forward (after discussing with Brian - one of my DH teachers) was to use a post supertype table that holds all common data and then have both comments and submissions tables primary key also be a foreign key that references this posts table. After doing this I quickly discovered a mismatch between some additional information added to parent id keys so they wouldn't properly match - I solved this by adding an addition variable passed through in my addComments function that would pass through the previous comment/submission id from the last position in the tree.
 
-I also had a problem with some authors throwing out HTTP errors - through debugging I discovered which authors were throwing these errors out. I then looked these authors api urls up and noticed that these returned 404 errors. Through some deft google searching I found discussion that noted that these occur when users are shadow banned. I had to add some special error handlign for these issues.
+I also had a problem with some authors throwing out HTTP errors - through debugging I discovered which authors were throwing these errors out. I then looked these authors api urls up and noticed that these returned 404 errors. Through some deft google searching I found discussion that noted that these occur when users are shadow banned. I had to add some special error handling for these issues.
+
+Initially, I was collecting authors whenever they came up for a post. In order to avoid collecting author data multiple times I would check if the author object already existed in the tuple and then add it if it didn't. Then later in my code I can iterate over the tuple for each author and add the data to my author dictionary - this way I would only be looking up the author data once per author rather than overwriting it.
+
+HOWEVER, because of how praw handles data look-ups, it will pass an author object but doesn't actually look it up until it is referenced in code - for example, when I'm checking if its in the tuple. At that point I get the 404 error, so the problem is that the author doesn't get added to my author table causing foreign key problems. I don't just want to assign these as None authors as they do exist. So what I did was I would check if the author exists in the tuple and add it. If I get an exception thrown then I know that the author is either a None author or a 404 (or some other error). So then I check if the str() of the author object exists and if it doesn't add it to the tuple. If that fails then I know that there is no author name. Later when doing my author look ups I first try for looking up the author object - if that fails then we know it is either a look-up error or a None type author. So then I try to add it to the dictionary as a string - a None type object will fail as it is not a string. So finally at the end I also make sure to add a None type object to the author table. For the authors that have a 404 error, I also collect this data as it is the only data other than name that I have about them. This may actually prove useful data as I can compare authors comments who have been banned and who have not. 
+
+The code to deal with authors:
+
+{% highlight python %}
+def addAuthor(author):
+    global author_collection
+    try:
+        if author not in author_collection:
+            author_collection = author_collection + (author,)
+            print 'Added Author: ' + str(author)
+    except Exception as e: 
+        print str(e) + ' for author ' + str(author) + ' adding as string instead of object'
+        try:
+            if str(author) not in author_collection:
+                author_collection = author_collection + (str(author),)
+                print 'Added Shadow_Banned Author as String: ' + str(author)
+        except Exception as e: print str(e) + ' Failed to add author as string instead of object'
+
+for author in author_collection:
+    print 'Collecting Author' + str(author)
+    try:
+        if author.name:
+            author_dict = {}
+            author_dict['Created']           = datetime.datetime.fromtimestamp(int(author.created_utc)).strftime('%Y-%m-%d')
+            author_dict['Comment_Karma']     = author.comment_karma
+            author_dict['Link_Karma']        = author.link_karma
+            author_dict['Is_Mod']            = author.is_mod
+            author_dict['Is_404']   = 'False'
+            author_db_dict[str(author.name)] = author_dict
+    except Exception as e: 
+        print(e)
+        try:
+            author_db_dict[str(author)] = {'Created': '', 'Comment_Karma': '0', 'Link_Karma': '0', 'Is_Mod': '', 'Is_404': 'True'}
+        except Exception as e: print(e)
+author_db_dict['None'] = {'Created': '', 'Comment_Karma': '0', 'Link_Karma': '0', 'Is_Mod': '', 'Is_404': 'False'}
+{% endhighlight %}
+
+
 
 ## An Aside on Twitter Scraping for Future Reference
 At first I had been struggling to find some information on how I would go about collecting data. I found some information about topsy.com, a service run by Apple that collected tweets and allowed end users to search that data in a variety of ways. Unfortunately, the service has now been shutdown. Nonetheless, pressing on further I was able to find some information. I've been collecting the links I've found in the section at the bottom of this post.
